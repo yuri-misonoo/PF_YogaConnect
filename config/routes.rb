@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:new, :create, :show, :edit, :update] do
       resources :health_logs
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
-      get 'health_logs/calender' => 'health_logs#graph'
+      get 'health_logs/calender' => 'health_logs#calender'
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
