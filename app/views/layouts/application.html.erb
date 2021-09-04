@@ -11,8 +11,8 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header style="height: 100px; background-color: rgba(255, 182, 193)", class="mb-5">
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <%= link_to 'Yoga Connect', root_path, class: 'navbar-brand p-3' %>
 
@@ -25,31 +25,32 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-secondary text-center bg-light" %>
+                  <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-secondary text-center bg-white" %>
+                  <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿する', new_post_path, class: "pl-2 nav-link text-secondary text-center bg-light" %>
+                  <%= link_to '投稿する', new_post_path, class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'マイページ', user_path(current_user), class: "pl-2 nav-link text-secondary text-center bg-white" %>
+                  <%= link_to 'マイページ', user_path(current_user), class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 text-secondary text-center bg-light" %>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link text-secondary text-center bg-light" %>
+                  <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿一覧', admin_posts_path, class: "pl-2 nav-link text-secondary text-center bg-white" %></li>
-                <li class="nav-item">
-                  <%= link_to 'コメント一覧', admin_post_comments_path, class: "pl-2 nav-link text-secondary text-center bg-light" %>
+                  <%= link_to '投稿一覧', admin_posts_path, class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "pl-2 nav-link text-secondary text-center bg-white" %>
+                  <%= link_to 'コメント一覧', admin_post_comments_path, class: "pl-2 nav-link text-secondary text-center" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "pl-2 nav-link text-secondary text-center" %>
                 </li>
               <% else %>
                 <li class="nav-item">
@@ -71,9 +72,11 @@
         </div>
       </nav>
     </header>
+      <% if flash[:notice] %>
+              <p class="bg-info text-center text-info notice"><%= flash[:notice] %></p>
+            <% end %>
 
-
-    <main>
+    <main class="mt-5">
       <div class="container">
         <%= yield %>
       </div>
