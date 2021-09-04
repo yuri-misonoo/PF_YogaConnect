@@ -17,4 +17,16 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+/* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
+@media (max-width: 992px) {
+ .nav-item{
+ background-color: #ffeeff;
+ }
+}
+
+$main-color: #ff99cc;
+
+header{
+ background-color: $main-color;
+}
 
