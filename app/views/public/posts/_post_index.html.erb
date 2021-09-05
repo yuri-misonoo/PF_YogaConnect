@@ -6,8 +6,9 @@
         <%= post.user.name %>
       <% end %>
       <%= post.post_time %><br>
-
-      <%= post.body %><br>
+      <%= link_to post_path(post), class: 'text-secondary' do %>
+        <%= post.body %>
+      <% end %>
 
       <% if post.user.id == current_user.id %>
         <div class="text-right">
