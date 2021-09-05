@@ -1,0 +1,22 @@
+<div>
+  <% posts.each do |post| %>
+    <div class="border-bottom pt-3 mb-3">
+      <%= link_to user_path(post.user) do %>
+        <%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "img" %>
+        <%= post.user.name %>
+      <% end %>
+      <%= post.post_time %><br>
+      <%= link_to post_path(post), class: 'text-secondary' do %>
+        <%= post.body %>
+      <% end %>
+
+      <% if post.user.id == current_user.id %>
+        <div class="text-right">
+          <%= link_to '編集', edit_post_path(post.id), class: "btn btn-info btn-sm btn-s" %>
+          <%= link_to '削除', post_path(post), method: :delete, "data-confirm" =>"本当に削除しますか？", class: " btn btn-secondary btn-sm btn-s" %>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -6,12 +6,13 @@ class Public::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:id])
-    @user.save(user_params)
+    @user = User.new(user_params)
+    @user.save
     redirect_to posts_path, notice: '仲間とともにヨガを楽しみましょう！'
   end
 
-  def index
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -20,8 +21,6 @@ class Public::UsersController < ApplicationController
   def update
   end
 
-  def destroy
-  end
 
   private
 
