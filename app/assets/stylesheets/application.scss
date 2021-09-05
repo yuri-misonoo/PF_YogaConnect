@@ -20,13 +20,30 @@
 /* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
 @media (max-width: 992px) {
  .nav-item{
- background-color: #ffeeff;
+  background-color: #ffeeff;
+ }
+ button{
+  text-align: left;
+ }
+ logo{
+  text-align: center;
  }
 }
 
-$main-color: #ff99cc;
+$main-color: #d0b0ff;
 
 header{
  background-color: $main-color;
 }
 
+.img{
+ border-radius: 50%;
+}
+
+.btn-s{
+ font-size: 8%;
+}
+
+p{
+ font-size: 30%;
+}

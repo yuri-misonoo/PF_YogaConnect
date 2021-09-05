@@ -11,7 +11,8 @@ class Public::UsersController < ApplicationController
     redirect_to posts_path, notice: '仲間とともにヨガを楽しみましょう！'
   end
 
-  def index
+  def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -20,8 +21,6 @@ class Public::UsersController < ApplicationController
   def update
   end
 
-  def destroy
-  end
 
   private
 
