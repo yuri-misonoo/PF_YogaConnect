@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/:id/new' => 'users#new', as: 'new_user'
     patch 'users/:id/new' => 'users#create', as: 'user_update'
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       resources :health_logs
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'

@@ -36,6 +36,7 @@ header{
  background-color: $main-color;
 }
 
+
 body{
  color: #808080;
 }
@@ -46,4 +47,11 @@ body{
 
 p{
  font-size: 30%;
+}
+
+.menu{
+ background-color: $main-color;
+ text-align: center;
+ border: none;
+ border-radius: 10% 5%;
 }
