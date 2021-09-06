@@ -22,11 +22,16 @@
  .nav-item{
   background-color: #ffeeff;
  }
- button{
-  text-align: left;
+ 
+ .logo{
+  margin: 0 auto;
  }
- logo{
-  text-align: center;
+ .header{
+  position: relative;
+   button{
+   position: absolute;
+   top: 10%;
+  }
  }
 }
 
