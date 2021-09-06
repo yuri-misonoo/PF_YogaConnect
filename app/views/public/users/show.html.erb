@@ -1,17 +1,32 @@
 <div class="row">
-  <div class="col-lg-6 col-md-7 col-sm-8 mx-auto">
+
+  <div class="col-lg-6 col-md-7 col-sm-11 mx-auto">
 
     <% if @user == current_user %>
       <h4>マイページ</h4>
-    <% else %>
-      <h4><%= @user.name %>さんの投稿</h4>
     <% end %>
-    
+
+    <% if @user == current_user %>
+      <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
+      <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary" %>
+      <%= link_to 'ヨガ実践カレンダー', user_health_logs_calender_path(current_user), class: "text-secondary" %>
+    <% end %>
+
     <div>
-      
+      <div>
+        <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= @user.name %>
+      </div>
+      <div><%= @user.introduction %></div>
+      <div><%= @user.posts.count %> 投稿</div>
     </div>
 
-    <%= render 'public/posts/post_index', posts: @user.posts %>
+
+    <div>
+      <%= render 'public/posts/post_index', posts: @user.posts %>
+    </div>
+
+
 
   </div>
 </div>
