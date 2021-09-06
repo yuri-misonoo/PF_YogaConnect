@@ -32,45 +32,45 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-secondary text-center" %>
+                  <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿する', new_post_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to '投稿する', new_post_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'マイページ', user_path(current_user), class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'マイページ', user_path(current_user), class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 nav-link text-center" %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link text-secondary text-center" %>
+                  <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿一覧', admin_posts_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to '投稿一覧', admin_posts_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'コメント一覧', admin_post_comments_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'コメント一覧', admin_post_comments_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "pl-2 nav-link text-center" %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to 'ホーム', root_path, class: "nav-link text-secondary text-center" %>
+                  <%= link_to 'ホーム', root_path, class: "nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '投稿を見る', posts_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to '投稿を見る', posts_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'ログイン', new_user_session_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'ログイン', new_user_session_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'サインアップ', new_user_registration_path, class: "pl-2 nav-link text-secondary text-center" %>
+                  <%= link_to 'サインアップ', new_user_registration_path, class: "pl-2 nav-link text-center" %>
                 </li>
               <% end %>
             </ul>

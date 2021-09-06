@@ -36,8 +36,9 @@ header{
  background-color: $main-color;
 }
 
-.img{
- border-radius: 50%;
+
+body{
+ color: #808080;
 }
 
 .btn-s{
@@ -46,4 +47,11 @@ header{
 
 p{
  font-size: 30%;
+}
+
+.menu{
+ background-color: $main-color;
+ text-align: center;
+ border: none;
+ border-radius: 10% 5%;
 }

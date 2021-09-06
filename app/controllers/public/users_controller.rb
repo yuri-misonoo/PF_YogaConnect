@@ -2,12 +2,12 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @user = User.new
+    @user = User.find(params[:id])
   end
 
   def create
-    @user = User.new(user_params)
-    @user.save
+    @user = User.find(params[:id])
+    @user.update(user_params)
     redirect_to posts_path, notice: '仲間とともにヨガを楽しみましょう！'
   end
 
@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :goal_weight, :goal)
+    params.require(:user).permit(:profile_image, :goal_weight, :goal, :introduction)
   end
 
 end
