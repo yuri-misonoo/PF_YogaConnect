@@ -7,5 +7,6 @@ class User < ApplicationRecord
   attachment :profile_image
   
   has_many :posts
+  has_many :health_logs
   
 end
