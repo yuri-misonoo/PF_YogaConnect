@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="border-bottom pt-3 mb-3">
       <%= link_to user_path(post.user), class: "text-secondary" do %>
-        <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
         <%= post.user.name %>
       <% end %>
       <%= post.post_time %><br>
