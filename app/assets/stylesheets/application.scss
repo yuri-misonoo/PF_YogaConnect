@@ -22,7 +22,7 @@
  .nav-item{
   background-color: #ffeeff;
  }
- 
+
  .logo{
   margin: 0 auto;
  }
@@ -41,22 +41,27 @@ header{
  background-color: $main-color;
 }
 
-
+/* 全体の文字色 */
 body{
  color: #808080;
 }
 
+/* ボタンのサイズ */
 .btn-s{
  font-size: 8%;
 }
 
+/* pタグの文字サイズ */
 p{
  font-size: 30%;
 }
 
+/* マイページのメニュー */
 .menu{
  background-color: $main-color;
  text-align: center;
  border: none;
  border-radius: 10% 5%;
 }
+
+

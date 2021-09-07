@@ -5,14 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Postモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { post.valid? }
-    
+
     let(:user) { create(:user) }
-    let!(:post) { build(:post, user_id: user_id) }
-    
+    let!(:post) { build(:post, user_id: user.id) }
+
     context 'bodyカラム' do
       it '空欄でないこと' do
         post.body = ''
-        is_expected.to wq false
+        is_expected.to eq false
       end
       it '10文字以上であること：9文字は×' do
         post.body = Faker::Lorem.characters(number: 9)
@@ -31,5 +31,5 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         is_expected.to eq true
       end
     end
-  end  
+  end
 end
