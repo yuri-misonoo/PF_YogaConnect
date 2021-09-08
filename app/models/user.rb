@@ -6,8 +6,9 @@ class User < ApplicationRecord
          
   attachment :profile_image
   
-  has_many :posts
-  has_many :health_logs
+  has_many :posts, dependent: :destroy
+  has_many :health_logs, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :introduction, length: { maximum: 70 }
