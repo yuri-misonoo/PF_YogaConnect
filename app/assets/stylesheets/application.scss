@@ -22,11 +22,16 @@
  .nav-item{
   background-color: #ffeeff;
  }
- button{
-  text-align: left;
+
+ .logo{
+  margin: 0 auto;
  }
- logo{
-  text-align: center;
+ .header{
+  position: relative;
+   button{
+   position: absolute;
+   top: 10%;
+  }
  }
 }
 
@@ -36,21 +41,26 @@ header{
  background-color: $main-color;
 }
 
-
+/* 全体の文字色 */
 body{
  color: #808080;
 }
 
+/* ボタンのサイズ */
 .btn-s{
  font-size: 8%;
 }
 
+/* pタグの文字サイズ */
 p{
  font-size: 30%;
 }
 
+/* マイページのメニュー */
 .menu{
  background-color: $main-color;
  text-align: center;
  border-radius: 10% 5%;
 }
+
+

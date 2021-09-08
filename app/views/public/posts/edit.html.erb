@@ -8,11 +8,18 @@
         <%= f.text_area :body, class: "form-control" %>
       </div>
 
-      <div class="action">
-        <%= f.submit '更新', class: "btn-info" %>
+      <div class="action text-center">
+        <%= f.submit '更新', class: "btn btn-info btn-s " %>
       </div>
     <% end %>
+
+    <div class="text-center pt-3">
+      <%= link_to '詳細へ', post_path(@post), class: "text-info" %>  |  <%= link_to '一覧へ', posts_path, class: "text-info" %>
+    </div>
+
   </div>
+
+
 </div>
 
 
