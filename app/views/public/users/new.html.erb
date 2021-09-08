@@ -6,7 +6,7 @@
     <p>※後で登録したい方は<%= link_to 'こちら ', posts_path %> </p>
 
     <%= form_with model: @user, url: user_update_path(@user), local: true do |f| %>
-
+    
     <div class="form-group">
       <label for="inputImage">【プロフィール画像】</label><br>
       <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "rounded-pill" %>
@@ -36,6 +36,7 @@
     <div class="action text-center">
       <%= f.submit "保存", class: "btn btn-info mb-3  btn-s" %>
     </div>
+
 
     <% end %>
 
