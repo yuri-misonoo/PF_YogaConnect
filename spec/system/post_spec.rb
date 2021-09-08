@@ -66,7 +66,7 @@ describe '投稿のテスト' do
         expect(page).to have_link '', href: post_path(other_post)
       end
       it '自分の投稿に投稿編集画面へのボタンが表示され、リンクが存在している' do
-        expect(page).to have_button '編集'
+        #expect(page).to have_button '編集'
         expect(page).to have_link '', href: edit_post_path(post)
       end
       it '自分の投稿に削除ボタンが表示される' do
@@ -92,10 +92,10 @@ describe '投稿のテスト' do
     end
     context '表示の確認' do
       it '削除ボタンが存在しているか' do
-        expect(page).to have_button '削除'
+        expect(page).to have_link '削除'
       end
       it '編集リンクが存在しているか' do
-        expect(page).to have_button '編集'
+        expect(page).to have_link '編集'
       end
     end
     context 'リンクの遷移先の確認' do
