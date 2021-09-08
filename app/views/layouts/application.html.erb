@@ -11,15 +11,15 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header>
+    <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container header">
-          
+
           <!--ハンバーガーメニュー-->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <div class="logo">
             <%= link_to root_path, class: 'navbar-brand' do %>
               <%= image_tag 'logo.png', :size => '150x70' %>
@@ -88,6 +88,16 @@
     </main>
 
     <footer class="mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-2 center-block mx-auto">
+            <p>心と体をつなぎ、人とつながる</p>
+            <%= image_tag 'logo.png', :size => '110x50' %>
+          </div>
+        </div>
+      </div>
+
+
 
     </footer>
 
