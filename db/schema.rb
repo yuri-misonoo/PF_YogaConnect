@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_073830) do
+ActiveRecord::Schema.define(version: 2021_09_08_054259) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2021_09_05_073830) do
     t.text "morning"
     t.text "lunch"
     t.text "dinner"
-    t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "health_log_on"
   end
 
   create_table "notifications", force: :cascade do |t|
