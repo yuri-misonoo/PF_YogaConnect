@@ -3,7 +3,7 @@
 
     <h4><%= Date.current.strftime('%Y/%m/%d') %>の記録</h4>
 
-    <%= form_with model: @health_log, local: true do |f| %>
+    <%= form_with(model: [@user, @health_log], local: true) do |f| %>
 
       <div class="form-group">
         <%= f.label :weight, '【体重(kg)】', class: 'form-label' %><br>
@@ -19,27 +19,27 @@
         <div>【元気度】</div>
 
         <div class="radio-inline">
-          <%= f.radio_button :feeling, 0 %>
+          <%= f.radio_button :feeling, 'とても元気' %>
           <%= f.label :feeling, 'とても元気' %>
         </div>
 
         <div class="radio-inline">
-          <%= f.radio_button :feeling, 1 %>
+          <%= f.radio_button :feeling,  'まあまあ元気' %>
           <%= f.label :feeling, 'まあまあ元気' %>
         </div>
 
         <div class="radio-inline">
-          <%= f.radio_button :feeling, 2 %>
+          <%= f.radio_button :feeling, '普通'%>
           <%= f.label :feeling, '普通', checked: 'checked' %>
         </div>
 
         <div class="radio-inline">
-          <%= f.radio_button :feeling, 3 %>
+          <%= f.radio_button :feeling, '少し落ち込んでいる' %>
           <%= f.label :feeling, '少し落ち込んでいる' %>
         </div>
 
         <div class="radio-inline">
-          <%= f.radio_button :feeling, 4 %>
+          <%= f.radio_button :feeling, '落ち込んでいる' %>
           <%= f.label :feeling, '落ち込んでいる' %>
         </div>
 
@@ -70,7 +70,7 @@
         <%= f.text_area :dinner, class: 'form-control' %>
       </div>
 
-      <%= f.hidden_field :health_log_on, :valu => Date.current.strftime('%Y/%m/%d') %>
+      <%= f.hidden_field :health_log_on, :value => Date.current.strftime('%Y/%m/%d') %>
 
       <div class='action text-center'>
         <%= f.submit '保存', class: 'btn btn-info btn-s' %>

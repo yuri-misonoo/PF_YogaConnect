@@ -2,6 +2,7 @@ class Public::HealthLogsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @user = User.find(params[:user_id])
     @health_log = HealthLog.new
   end
 
@@ -9,7 +10,7 @@ class Public::HealthLogsController < ApplicationController
     @health_log = HealthLog.new(health_log_params)
     @health_log.user_id = current_user.id
     if @health_log.save
-      redirect_to user_health_log_path(@health_log), notice: '今日の記録を保存しました！'
+      redirect_to user_health_log_path(@health_log.user, @health_log), notice: '今日の記録を保存しました！'
     else
       render :new
     end
@@ -43,7 +44,7 @@ class Public::HealthLogsController < ApplicationController
   private
 
   def health_log_params
-    params.require(:health_log).permit(:weight, :tempreture, :feeling, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on)
+    params.require(:health_log).permit(:weight, :temperature, :feeling, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on)
   end
 
 end
