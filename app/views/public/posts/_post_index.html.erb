@@ -11,8 +11,8 @@
       <% end %>
 
       <div class="mt-3 mb-3 d-flex">
-        <div class="mr-4">
-          <%= render 'public/favorites/favorite', post: post %>
+        <div class="mr-4", id="favorite_btn">
+          <%= render partial: 'public/favorites/favorite', locals: {post: post} %>
         </div>
 
         <div>
