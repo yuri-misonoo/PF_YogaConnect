@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calender' => 'health_logs#calender'
+      
+      resource :relationships, only: [:create, :destroy] do
+        get 'followings' => 'relationships#followings'
+        get 'followers' => 'relationship#followers'
+      end
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
