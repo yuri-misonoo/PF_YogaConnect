@@ -30,8 +30,12 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+
+    resources :chats, only: [:show, :create]
     resources :notification, only: [:index]
   end
+
+
 
   namespace :admin do
     resources :users, only: [:index]
