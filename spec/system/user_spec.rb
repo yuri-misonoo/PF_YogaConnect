@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'userコントローラのテスト' do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
-  let(:post) { create(:post, body: 'abcdefghijk', user: user) }
+  let!(:post) { create(:post, body: 'abcdefghijk', user: user) }
   let(:other_post) { create(:other_post, body: 'abcdefghijk', user: user) }
 
   before do
@@ -44,13 +44,13 @@ describe 'userコントローラのテスト' do
 
     context '登録成功のテスト' do
       before do
-        fill_in 'user[profile_image]', with: user.profile_image
+        #fill_in 'user[profile_image]', with: user.profile_image
         fill_in 'user[introduction]', with: user.introduction
         fill_in 'user[goal_weight]', with: user.goal_weight
         fill_in 'user[goal]', with: user.goal
         click_button '登録'
       end
-      
+
       it '登録後のリダイレクト先が、投稿一覧ページになっている' do
         expect(current_path).to eq '/posts'
       end
@@ -100,37 +100,39 @@ describe 'userコントローラのテスト' do
       end
 
       it '自分の投稿一覧が表示される' do
-        expect(page).to have_content user.posts
+        pp user
+        pp user.posts.count
+        expect(page).to have_content user.posts.first.body
       end
     end
   end
-  
+
   describe 'ユーザー情報編集画面のテスト' do
-    before do 
+    before do
       visit edit_user_path(user)
     end
-    
+
     context '表示の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
       end
-      
+
       it '画像編集フォームが表示されるか' do
-        expect(page).to have_field 'user[profile_image]', with: user.profile_image
+        expect(page).to have_field 'user[profile_image]'
       end
-      
+
       it 'ニックネーム編集フォームが表示される' do
-        expect(page).to have_field 'user[name]', with: user.name 
+        expect(page).to have_field 'user[name]', with: user.name
       end
-      
+
       it '自己紹介文の編集フォームが表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
-      
+
       it '目標体重の編集フォームが表示される' do
         expect(page).to have_field 'user[goal_weight]', with: user.goal_weight
       end
-      
+
       it 'ヨガ実践目標のフォームが表示される' do
         expect(page).to have_field 'user[goal]', with: user.goal
       end
