@@ -14,27 +14,33 @@
       <div><%= @user.posts.count %> 投稿</div>
 
       <div class="d-flex">
-        <div class="text-center">
+        <div class="text-center"><!-- フォロワーの人数 -->
           <%= link_to followers_user_relationships_path(@user), class: "text-secondary" do %>
             <%= @user.followers.count %> <br> <p>フォロワー</p>
           <% end %>
         </div>
 
-        <div class="ml-2 text-center">
+        <div class="ml-2 text-center"><!-- フォロー中の人数 -->
           <%= link_to followings_user_relationships_path(@user), class: "text-secondary" do %>
             <%= @user.followings.count %> <br> <p>フォロー中</p>
           <% end %>
         </div>
       </div>
 
-      <div>
+      <div><!-- フォローボタンの表示 -->
         <%= render 'public/relationships/follow', user: @user %>
+      </div>
+
+      <div>
+        <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+          <%= link_to 'chatを始める', chat_path(@user.id) %>
+        <% end %>
       </div>
 
     </div>
 
     <% if @user == current_user %>
-      <div class="menu p-2">
+      <div class="menu p-2 mt-4">
         <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
         <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to 'ヨガ実践カレンダー', user_health_logs_calender_path(current_user), class: "text-secondary ml-4" %>
