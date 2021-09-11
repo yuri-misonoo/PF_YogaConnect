@@ -24,9 +24,14 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
+    @health_log = HealthLog.find(params[:id])
   end
 
   def update
+    @health_log = HealthLog.find(params[:id])
+    @health_log.update(health_log_params)
+    redirect_to user_health_log_path(@health_log.user, @health_log), notice: '記録内容を保存しました'
   end
 
   def destroy
@@ -44,7 +49,7 @@ class Public::HealthLogsController < ApplicationController
   private
 
   def health_log_params
-    params.require(:health_log).permit(:weight, :temperature, :feeling, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on)
+    params.require(:health_log).permit(:weight, :temperature, :feeling, :is_active, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on)
   end
 
 end

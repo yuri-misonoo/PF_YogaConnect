@@ -11,8 +11,8 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :tempreture, '【体温(℃)】', class: 'form-label' %>
-        <%= f.text_field :tempreture, class: 'form-control col-3' %>
+        <%= f.label :temperature, '【体温(℃)】', class: 'form-label' %>
+        <%= f.text_field :temperature, class: 'form-control col-3' %>
       </div>
 
       <div class="form-group">
@@ -46,12 +46,15 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :memo, '【今日の一言】', class: 'form-label' %>
-        <%= f.text_area :memo, class: 'form-control' %>
+        <div class="mb-1">【今日ヨガはしましたか？】</div>
+        <%= f.radio_button :is_active, :true, checked: true %>
+        <%= f.label :is_active, 'はい' %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, 'いいえ' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :exercise, '【今日のヨガ実践】', class: 'form-label' %>
+        <%= f.label :exercise, '【ヨガ実践内容】', class: 'form-label' %>
         <%= f.text_area :exercise, class: 'form-control' %>
       </div>
 
@@ -68,6 +71,11 @@
       <div class="form-group">
         <%= f.label :dinner, '【夕食】', class: 'form-label' %>
         <%= f.text_area :dinner, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :memo, '【今日のメモ】', class: 'form-label' %>
+        <%= f.text_area :memo, class: 'form-control', rows: 4, placeholder: '今日の良かったこと、うまくいかなかったこと、今日感じたことを何でも書いてみよう！' %>
       </div>
 
       <%= f.hidden_field :health_log_on, :value => Date.current.strftime('%Y/%m/%d') %>

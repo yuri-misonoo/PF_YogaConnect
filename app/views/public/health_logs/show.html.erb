@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-7 col-md-10 col-sm-11 mx-auto">
+    <h4 class="text-center mb-4"><%= @health_log.health_log_on %>の記録</h4>
+
+    <table class="table text-secondary">
+      <tbody>
+        <tr>
+          <td>体重</td>
+          <td><%= link_to @health_log.weight, user_health_logs_graph_path(@health_log.user, @health_log) %>kg</td>
+        </tr>
+        <tr>
+          <td>体温</td>
+          <td><%= link_to @health_log.temperature, user_health_logs_graph_path(@health_log.user, @health_log) %>℃</td>
+        </tr>
+        <tr>
+          <td>元気度</td>
+          <td><%= link_to @health_log.feeling, user_health_logs_graph_path(@health_log.user, @health_log) %></td>
+        </tr>
+        <tr>
+          <td>ヨガ実践</td>
+          <td>
+            <%= link_to user_health_logs_calender_path(@health_log.user) do %>
+              <% if @health_log.is_active == true %>
+                実践した
+              <% else %>
+                実践していない
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ヨガ実践内容</td>
+          <td><%= link_to @health_log.exercise, user_health_logs_calender_path(@health_log.user) %></td>
+        </tr>
+        <tr>
+          <td>朝食</td>
+          <td><%= @health_log.morning %></td>
+        </tr>
+        <tr>
+          <td>昼食</td>
+          <td><%= @health_log.lunch %></td>
+        </tr>
+        <tr>
+          <td>夕食</td>
+          <td><%= @health_log.dinner %></td>
+        </tr>
+        <tr>
+          <td>今日のメモ</td>
+          <td><%= link_to @health_log.memo, user_health_logs_memo_path(@health_log.user) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center">
+      <%= link_to '編集する', edit_user_health_log_path(@health_log.user, @health_log), class: "btn btn-info btn-s" %>
+    </div>
+
+  </div>
+</div>

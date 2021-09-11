@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+
+    <h4><%= Date.current.strftime('%Y/%m/%d') %>の記録</h4>
+
+    <%= form_with(model: [@user, @health_log], local: true) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :weight, '【体重(kg)】', class: 'form-label' %><br>
+        <%= f.text_field :weight, autofocus: true, class: 'form-control col-3' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :temperature, '【体温(℃)】', class: 'form-label' %>
+        <%= f.text_field :temperature, class: 'form-control col-3' %>
+      </div>
+
+      <div class="form-group">
+        <div>【元気度】</div>
+
+        <div class="radio-inline">
+          <%= f.radio_button :feeling, 'とても元気' %>
+          <%= f.label :feeling, 'とても元気' %>
+        </div>
+
+        <div class="radio-inline">
+          <%= f.radio_button :feeling,  'まあまあ元気' %>
+          <%= f.label :feeling, 'まあまあ元気' %>
+        </div>
+
+        <div class="radio-inline">
+          <%= f.radio_button :feeling, '普通'%>
+          <%= f.label :feeling, '普通', checked: 'checked' %>
+        </div>
+
+        <div class="radio-inline">
+          <%= f.radio_button :feeling, '少し落ち込んでいる' %>
+          <%= f.label :feeling, '少し落ち込んでいる' %>
+        </div>
+
+        <div class="radio-inline">
+          <%= f.radio_button :feeling, '落ち込んでいる' %>
+          <%= f.label :feeling, '落ち込んでいる' %>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <div class="mb-1">【今日ヨガはしましたか？】</div>
+        <%= f.radio_button :is_active, :true, checked: true %>
+        <%= f.label :is_active, 'はい' %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :is_active, 'いいえ' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :exercise, '【ヨガ実践内容】', class: 'form-label' %>
+        <%= f.text_area :exercise, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :morning, '【朝食】', class: 'form-label' %>
+        <%= f.text_area :morning, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :lunch, '【昼食】', class: 'form-label' %>
+        <%= f.text_area :lunch, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :dinner, '【夕食】', class: 'form-label' %>
+        <%= f.text_area :dinner, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :memo, '【今日のメモ】', class: 'form-label' %>
+        <%= f.text_area :memo, class: 'form-control', rows: 4, placeholder: '今日の良かったこと、うまくいかなかったこと、今日感じたことを何でも書いてみよう！' %>
+      </div>
+
+      <!--%= f.hidden_field :health_log_on, :value => Date.current.strftime('%Y/%m/%d') %> -->
+
+      <div class='action text-center'>
+        <%= f.submit '更新', class: 'btn btn-info btn-s' %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
