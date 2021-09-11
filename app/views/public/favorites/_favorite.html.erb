@@ -3,8 +3,8 @@
   <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "fas fa-heart text-danger" do %>
     <%= post.favorites.count %>
   <% end %>
+  
 <% else %>
-
   <%= link_to post_favorites_path(post), method: :post, remote: true, class: "far fa-heart text-secondary" do %>
     <%= post.favorites.count %>
   <% end %>

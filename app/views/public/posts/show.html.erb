@@ -10,7 +10,7 @@
     <%= @post.body %><br>
 
     <div class="mt-3 d-flex"><!-- いいね、コメントの件数 -->
-      <div class="mr-4", id="favorite_btn">
+      <div class="mr-4", id="favorite_btn_<%= @post.id %>">
         <%= render partial: 'public/favorites/favorite', locals: { post: @post } %>
       </div>
 

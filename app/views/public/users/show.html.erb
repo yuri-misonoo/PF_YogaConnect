@@ -12,9 +12,25 @@
       </div>
       <div><%= @user.introduction %></div>
       <div><%= @user.posts.count %> 投稿</div>
+
+      <div class="d-flex">
+        <div class="text-center">
+          <%= link_to followers_user_relationships_path(@user), class: "text-secondary" do %>
+            <%= @user.followers.count %> <br> <p>フォロワー</p>
+          <% end %>
+        </div>
+
+        <div class="ml-2 text-center">
+          <%= link_to followings_user_relationships_path(@user), class: "text-secondary" do %>
+            <%= @user.followings.count %> <br> <p>フォロー中</p>
+          <% end %>
+        </div>
+      </div>
+
       <div>
         <%= render 'public/relationships/follow', user: @user %>
       </div>
+
     </div>
 
     <% if @user == current_user %>
