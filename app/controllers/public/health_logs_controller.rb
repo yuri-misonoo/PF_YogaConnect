@@ -22,6 +22,7 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @health_log = HealthLog.find(params[:id])
   end
 
@@ -40,6 +41,29 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def graph
+    #今日から７日前をfromに格納　.weekをつけないとだめ
+    from  = Time.current.at_beginning_of_day - 1.week
+    #今日をtoに格納
+    to    = Time.current.at_end_of_day
+    #pluckは指定されたものだけの配列を作る
+    @weekly_weight = HealthLog.where(created_at: from...to).pluck(:created_at, :weight)
+
+    #今日から一ヶ月前を格納
+    from2 = Time.current.at_beginning_of_day - 1.month
+    #今日を格納
+    to2 = Time.current.at_end_of_day
+    @monthly_weight = HealthLog.where(created_at: from2...to2).pluck(:created_at, :weight)
+    
+    #一週間の体温
+    from3 = Time.current.at_beginning_of_day - 1.week
+    to3 = Time.current.at_end_of_day
+    @weekly_temperature = HealthLog.where(created_at: from3...to3).pluck(:created_at, :temperature)
+    
+    #一ヶ月の体温
+    from4 = Time.current.at_beginning_of_day - 1.month
+    to4 = Time.current.at_end_of_day
+    @monthly_temperature = HealthLog.where(created_at: from4...to4).pluck(:created_at, :temperature)
+
   end
 
   def memo

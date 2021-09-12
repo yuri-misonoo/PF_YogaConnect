@@ -76,6 +76,9 @@ gem "refile-mini_magick"
 
 gem 'listen', '>= 3.0.5', '< 3.2'
 
+gem 'chartkick'
+gem 'groupdate'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
