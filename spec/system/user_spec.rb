@@ -100,8 +100,6 @@ describe 'userコントローラのテスト' do
       end
 
       it '自分の投稿一覧が表示される' do
-        pp user
-        pp user.posts.count
         expect(page).to have_content user.posts.first.body
       end
     end

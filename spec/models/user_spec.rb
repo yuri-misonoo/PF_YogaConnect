@@ -46,5 +46,60 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:posts).macro).to eq :has_many
       end
     end
+
+    context 'HealthLogモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:health_logs).macro).to eq :has_many
+      end
+    end
+
+    context 'PostCommentモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:post_comments).macro).to eq :has_many
+      end
+    end
+
+    context 'Favoriteモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+    end
+
+    context 'UserRoomモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:user_rooms).macro).to eq :has_many
+      end
+    end
+
+    context 'Chatモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:chats).macro).to eq :has_many
+      end
+    end
+
+    context 'Roomモデルとの関係' do
+      it '1:Nの関係になっている' do
+        expect(User.reflect_on_association(:rooms).macro).to eq :has_many
+      end
+    end
+
+    context 'Relationshipモデルとの関係' do
+      it 'reverse_of_relationshipと1:Nの関係になっている' do
+        expect(User.reflect_on_association(:reverse_of_relationships).macro).to eq :has_many
+      end
+
+      it 'relationshipと1:Nの関係になっている' do
+        expect(User.reflect_on_association(:relationships).macro).to eq :has_many
+      end
+
+      it 'followerと1:Nの関係になっている' do
+        expect(User.reflect_on_association(:followers).macro).to eq :has_many
+      end
+
+      it ':followingと1:Nの関係になっている' do
+        expect(User.reflect_on_association(:followings).macro).to eq :has_many
+      end
+    end
+
   end
 end

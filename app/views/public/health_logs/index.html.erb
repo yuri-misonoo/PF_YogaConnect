@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+    <h4 class="text-center">記録一覧</h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>体重</th>
+          <th>体温</th>
+          <th>元気度</th>
+          <th>ヨガ実践</th>
+        </tr>
+      </thead>
+
+      <% @health_logs.each do |health_log| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to health_log.health_log_on, user_health_log_path(health_log.user, health_log), class: 'text-secondary' %>
+            </td>
+            <td>
+              <%= link_to health_log.weight, user_health_logs_graph_path(health_log.user), class: 'text-secondary' %>
+            </td>
+            <td>
+              <%= link_to health_log.temperature, user_health_logs_graph_path(health_log.user), class: 'text-secondary' %>
+            </td>
+            <td>
+              <%= link_to health_log.feeling, user_health_logs_graph_path(health_log.user), class: 'text-secondary' %>
+            </td>
+            <td>
+              <%= link_to health_log.is_active, user_health_logs_calender_path(health_log.user), class: 'text-secondary' %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+
+
+
+
+  </div>
+</div>

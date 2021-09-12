@@ -5,32 +5,30 @@
     <table class="table text-secondary">
       <tbody>
         <tr>
-          <td>体重</td>
-          <td><%= link_to @health_log.weight, user_health_logs_graph_path(@health_log.user, @health_log) %>kg</td>
+          <td><%= link_to '体重', user_health_logs_graph_path(@health_log.user, @health_log), class: 'text-secondary' %></td>
+          <td><%= @health_log.weight %>kg</td>
         </tr>
         <tr>
-          <td>体温</td>
-          <td><%= link_to @health_log.temperature, user_health_logs_graph_path(@health_log.user, @health_log) %>℃</td>
+          <td><%= link_to '体温', user_health_logs_graph_path(@health_log.user, @health_log), class: 'text-secondary' %></td>
+          <td><%= @health_log.temperature %>℃</td>
         </tr>
         <tr>
-          <td>元気度</td>
-          <td><%= link_to @health_log.feeling, user_health_logs_graph_path(@health_log.user, @health_log) %></td>
+          <td><%= link_to '元気度', user_health_logs_graph_path(@health_log.user, @health_log), class: 'text-secondary' %></td>
+          <td><%= @health_log.feeling %></td>
         </tr>
         <tr>
-          <td>ヨガ実践</td>
+          <td><%= link_to 'ヨガ実践', user_health_logs_calender_path(@health_log.user), class: 'text-secondary' %></td>
           <td>
-            <%= link_to user_health_logs_calender_path(@health_log.user) do %>
-              <% if @health_log.is_active == true %>
-                実践した
-              <% else %>
-                実践していない
-              <% end %>
+            <% if @health_log.is_active == true %>
+              実践した
+            <% else %>
+              実践していない
             <% end %>
           </td>
         </tr>
         <tr>
-          <td>ヨガ実践内容</td>
-          <td><%= link_to @health_log.exercise, user_health_logs_calender_path(@health_log.user) %></td>
+          <td><%= link_to 'ヨガ実践内容', user_health_logs_calender_path(@health_log.user), class: 'text-secondary' %></td>
+          <td><%= @health_log.exercise %></td>
         </tr>
         <tr>
           <td>朝食</td>
@@ -45,8 +43,8 @@
           <td><%= @health_log.dinner %></td>
         </tr>
         <tr>
-          <td>今日のメモ</td>
-          <td><%= link_to @health_log.memo, user_health_logs_memo_path(@health_log.user) %></td>
+          <td><%= link_to '今日のメモ', user_health_logs_memo_path(@health_log.user), class: 'text-secondary' %></td>
+          <td><%= @health_log.memo %></td>
         </tr>
       </tbody>
     </table>
