@@ -4,9 +4,6 @@ class HealthLog < ApplicationRecord
   
   belongs_to :user
   
-  def average_weekly_weight
-    group_by_month
-  end
 
   
 end
