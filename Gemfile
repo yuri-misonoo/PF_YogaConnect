@@ -79,6 +79,8 @@ gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'chartkick'
 gem 'groupdate'
 
+gem 'simple_calendar', '~> 2.0'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

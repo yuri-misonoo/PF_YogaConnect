@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy] do
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
-      get 'health_logs/calender' => 'health_logs#calender'
+      get 'health_logs/calendar' => 'health_logs#calendar'
       resources :health_logs
 
       resource :relationships, only: [:create, :destroy] do

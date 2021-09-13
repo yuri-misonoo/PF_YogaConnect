@@ -239,6 +239,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   refile-mini_magick
   rspec-rails
   sass-rails (~> 5.0)
+  simple_calendar (~> 2.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
