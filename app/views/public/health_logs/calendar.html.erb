@@ -1,7 +1,22 @@
-<%= month_calendar events: @health_logs do |date, is_active| %>
-  <%= date.day %>
-  <% if is_active == true %>
-    <div>○</div>
+<%= month_calendar(events: @health_logs) do |date, meetings| %>
+  <%= date %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.is_active %>
+    </div>
   <% end %>
 <% end %>
 
+
+<!--
+%= month_calendar(events: @health_logs) do | date, logs | %>
+
+  %= date.day %>
+  % logs.each do |row| %>
+    % if row.is_active == true %>
+      <div>○</div>
+    % end %>
+  % end %>
+% end %>
+-->

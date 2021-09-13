@@ -79,6 +79,7 @@
       </div>
 
       <%= f.hidden_field :health_log_on, :value => Date.current.strftime('%Y/%m/%d') %>
+      <%= f.hidden_field :start_time, :value => Date.current.strftime('%Y/%m/%d') %>
 
       <div class='action text-center'>
         <%= f.submit '保存', class: 'btn btn-info btn-s' %>

@@ -4,29 +4,41 @@
 
     <h6>体重の推移</h6>
 
-    <div class="weight1 mt-3">
+<script>
+function btn2() {
+    $('#weight-graph2').addClass("active");
+    $('#weight-graph1').addClass("hidden");
+
+    $('#weight-graph1').removeClass("active");
+    $('#weight-graph2').removeClass("hidden");
+
+}
+function btn1() {
+    $('#weight-graph1').addClass("active");
+    $('#weight-graph2').addClass("hidden");
+
+    $('#weight-graph2').removeClass("active");
+    $('#weight-graph1').removeClass("hidden");
+}
+
+
+</script>
+    <div class="mt-3">
       <div class="text-right">
-        <div class="btn btn-info btn-s">一週間の推移</div>
-        <div class="btn btn-secondary btn-s">一ヶ月の推移</div>
+        <input type="button" class="btn btn-info btn-s" id="weight_button1" onclick="btn1();">一週間の推移
+        <input type="button" class="btn btn-secondary btn-s" id="weight_button2" onclick="btn2();">一ヶ月の推移
       </div>
 
-      <div class="graph">
-        <%= line_chart @weekly_weight, download: true, curve: false, series: false, colors: ['#0099FF'] %>
+      <div class="graph active", id="weight-graph1">
+        <%= line_chart @weekly_weight, download: true, curve: false, series: false, min: 30, colors: ['#0099FF'] %>
+      </div>
+
+       <div class='graph hidden', id="weight-graph2">
+        <%= line_chart @monthly_weight, download: true, curve: false, series: false, min: 30, colors: ['#000000'] %>
       </div>
     </div>
 
-    <div class="weight2 mt-3">
-      <div class="text-right">
-        <div class="btn btn-info btn-s">一週間の推移</div>
-        <div class="btn btn-secondary btn-s">一ヶ月の推移</div>
-      </div>
-
-      <div class='graph'>
-        <%= line_chart @monthly_weight, download: true, curve: false, series: false, colors: ['#0099FF'] %>
-      </div>
-    </div>
-
-    <h6>体温の推移</h6>
+    <h6 class="text-center">体温の推移</h6>
 
     <div class="temperature1 mt-3">
       <div class="text-right">
@@ -37,21 +49,11 @@
       <div class='graph'>
         <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
       </div>
-    </div>
-
-    <div class="temperature2 mt-3">
-      <div class="text-right">
-        <div class="btn btn-info btn-s">一週間の推移</div>
-        <div class="btn btn-secondary btn-s">一ヶ月の推移</div>
-      </div>
 
       <div class='graph'>
         <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
       </div>
     </div>
-
-
-
 
   </div>
 </div>
