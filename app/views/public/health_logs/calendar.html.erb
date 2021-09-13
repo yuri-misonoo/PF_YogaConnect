@@ -1,0 +1,7 @@
+<%= month_calendar events: @health_logs do |date, is_active| %>
+  <%= date.day %>
+  <% if is_active == true %>
+    <div>○</div>
+  <% end %>
+<% end %>
+

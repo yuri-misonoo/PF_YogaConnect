@@ -1,5 +1,25 @@
 <div class="row">
   <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
-    
+    <h4 class="text-center">今日のメモ一覧</h4>
+
+    <div class="text-right">
+      <%= link_to '記録一覧へ', user_health_logs_path(current_user), class: "btn btn-info btn-s" %>
+    </div>
+
+    <% @health_logs.each do |health_log| %>
+      <div class="mt-4">
+        <div class="border text-center">
+          <%= health_log.health_log_on %>
+        </div>
+        <div class="border text-center">
+          <%= health_log.memo %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="mx-auto mt-4">
+      <%= paginate @health_logs %>
+    </div>
+
   </div>
 </div>

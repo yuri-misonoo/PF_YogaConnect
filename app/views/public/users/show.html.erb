@@ -43,7 +43,7 @@
       <div class="menu p-2 mt-4">
         <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
         <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-4" %>
-        <%= link_to 'ヨガ実践カレンダー', user_health_logs_calender_path(current_user), class: "text-secondary ml-4" %>
+        <%= link_to 'ヨガ実践カレンダー', user_health_logs_calendar_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to '編集', edit_user_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to '退会', user_path(@user), method: :delete, "data-confirm" =>"データは全て削除されます。本当に退会しますか？", class: " text-secondary ml-4" %>
       </div>

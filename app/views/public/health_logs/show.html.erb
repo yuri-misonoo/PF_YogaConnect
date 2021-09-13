@@ -17,7 +17,7 @@
           <td><%= @health_log.feeling %></td>
         </tr>
         <tr>
-          <td><%= link_to 'ヨガ実践', user_health_logs_calender_path(@user), class: 'text-secondary' %></td>
+          <td><%= link_to 'ヨガ実践', user_health_logs_calendar_path(@user), class: 'text-secondary' %></td>
           <td>
             <% if @health_log.is_active == true %>
               実践した
@@ -27,7 +27,7 @@
           </td>
         </tr>
         <tr>
-          <td><%= link_to 'ヨガ実践内容', user_health_logs_calender_path(@user), class: 'text-secondary' %></td>
+          <td><%= link_to 'ヨガ実践内容', user_health_logs_calendar_path(@user), class: 'text-secondary' %></td>
           <td><%= @health_log.exercise %></td>
         </tr>
         <tr>
