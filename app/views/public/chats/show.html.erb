@@ -4,20 +4,20 @@
 
     <div class="message mt-3">
       <% @chats.each do |chat| %>
-        <% if chat.user_id == current_user.id %>
+        <% if chat.user_id != current_user.id %>
           <div class="text-left">
-            <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+            <%= link_to user_path(@user) do %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+            <% end %>
             <%= chat.message %><br>
-            <%= current_user.name %>
+            <p><%= @user.name %></p>
           </div>
 
         <% else %>
           <div class="text-right">
-            <div>
-              <%= chat.message %>
-              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
-              <%= @user.name %>
-            </div>
+            <%= chat.message %>
+            <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
+            <p><%= current_user.name %></p>
           </div>
         <% end %>
       <% end %>

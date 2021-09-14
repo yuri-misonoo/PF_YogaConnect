@@ -16,8 +16,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    folllowing_users = current_user.followings.pluck(:id) # フォローしているユーザーのid一覧
-    folllowing_users.push(current_user.id) # 自身のidを一覧に追加する
+    # フォローしているユーザーのid一覧
+    folllowing_users = current_user.followings.pluck(:id) 
+    # 自身のidを一覧に追加する
+    folllowing_users.push(current_user.id) 
     @posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
   end
 
