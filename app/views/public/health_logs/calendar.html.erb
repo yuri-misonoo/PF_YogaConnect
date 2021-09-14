@@ -1,7 +1,20 @@
-<%= month_calendar events: @health_logs do |date, is_active| %>
-  <%= date.day %>
-  <% if is_active == true %>
-    <div>○</div>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+
+    <%= month_calendar(events: @health_logs) do |date, health_logs| %>
+      <%= date %>
+    
+      <% health_logs.each do |health_log| %>
+        <div>
+          <% if health_log.is_active == true %>
+            <i class="fas fa-circle"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
 
