@@ -16,7 +16,7 @@
  *= require_self
  */
 
-
+ @import "simple_calendar";
 
  @import "bootstrap";
  @import 'font-awesome-sprockets';
@@ -42,6 +42,8 @@
 
 $main-color: #d0b0ff;
 
+$sub-color: #808080;
+
 header{
  background-color: $main-color;
 }
@@ -52,7 +54,7 @@ footer{
 
 /* 全体の文字色 */
 body{
- color: #808080;
+ color: $sub-color;
 }
 
 /* ボタンのサイズ */
@@ -91,5 +93,53 @@ p{
   display:none;
 }
 
+/* カレンダーの円の色 */
+.fa-circle{
+ color: $main-color;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {
+   text-align: center;
+  }
+  .wday-1 {
+   text-align: center;
+  }
+  .wday-2 {
+   text-align: center;
+  }
+  .wday-3 {
+   text-align: center;
+  }
+  .wday-4 {
+   text-align: center;
+  }
+  .wday-5 {
+   text-align: center;
+  }
+  .wday-6 {
+   text-align: center;
+  }
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+   color: $sub-color;
+   background-color: white;
+  }
+  .next-month {
+   color: $sub-color;
+   background-color: white;
+  }
+  .current-month {}
+
+  .has-events {}
+}
 
 
