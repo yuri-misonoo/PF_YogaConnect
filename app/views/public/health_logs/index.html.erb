@@ -2,7 +2,7 @@
   <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
     <h4 class="text-center">記録一覧</h4>
 
-    <table class="table">
+    <table class="table mt-3">
       <thead>
         <tr>
           <th>日付</th>
@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td>
-              
+
               <%= link_to health_log.health_log_on, user_health_log_path(health_log.user, health_log), class: 'text-secondary' %>
             </td>
             <td>
@@ -26,8 +26,8 @@
             <td>
               <%= link_to health_log.temperature, user_health_logs_graph_path(health_log.user), class: 'text-secondary' %>
             </td>
-            <td>
-              <%= link_to health_log.feeling, user_health_logs_graph_path(health_log.user), class: 'text-secondary' %>
+            <td class="text-secondary">
+              <%= health_log.feeling %>
             </td>
             <td>
               <%= link_to health_log.is_active, user_health_logs_calendar_path(health_log.user), class: 'text-secondary' %>
@@ -37,8 +37,9 @@
       <% end %>
     </table>
 
-
-
+    <div class="mt-4">
+      <%= paginate @health_logs %>
+    </div>
 
   </div>
 </div>

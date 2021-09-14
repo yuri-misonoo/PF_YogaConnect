@@ -78,7 +78,11 @@ p{
   color: #696969;   /*文字の色を変える*/
 }
 
+.pagination {
+  justify-content: center;
+}
 
+/* グラフのjavascriptのための記述 */
 .active{
   display:block;
 }

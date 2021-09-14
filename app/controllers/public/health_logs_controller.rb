@@ -17,8 +17,8 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def index
-    #userのidに一致している全レコードを取得
-    @health_logs = HealthLog.where(user_id: params[:user_id])
+    #current_userのidに一致している全レコードを取得
+    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(3)
   end
 
   def show
@@ -68,7 +68,7 @@ class Public::HealthLogsController < ApplicationController
 
   def memo
     #@health_logs = HealthLog.where(user_id: current_user.id).pluck(:health_log, :memo)
-    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(2)
+    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(10)
   end
 
   def calendar

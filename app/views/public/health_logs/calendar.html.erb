@@ -1,22 +1,14 @@
-<%= month_calendar(events: @health_logs) do |date, meetings| %>
+<%= month_calendar(events: @health_logs) do |date, health_logs| %>
   <%= date %>
 
-  <% meetings.each do |meeting| %>
+  <% health_logs.each do |health_log| %>
     <div>
-      <%= meeting.is_active %>
+      <% if health_log.is_active == true %>
+        <strong>○</strong>
+      <% end %>
     </div>
   <% end %>
 <% end %>
 
 
-<!--
-%= month_calendar(events: @health_logs) do | date, logs | %>
 
-  %= date.day %>
-  % logs.each do |row| %>
-    % if row.is_active == true %>
-      <div>○</div>
-    % end %>
-  % end %>
-% end %>
--->
