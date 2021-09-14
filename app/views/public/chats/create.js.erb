@@ -1,7 +1,10 @@
 $('.message').append(`
-                    <div class="text-left">
-                        <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
-                        <%= @chat.message %><br>
-                        <%= current_user.name %>
+                    <div class="text-right">
+                        <%= @chat.message %>
+                        <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
+                        <p><%= current_user.name %></p>
                     </div>`);
 $('input[type=text]').val("")
+
+
+
