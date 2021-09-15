@@ -18,7 +18,7 @@ class Public::HealthLogsController < ApplicationController
 
   def index
     #current_userのidに一致している全レコードを取得
-    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(10)
+    @health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

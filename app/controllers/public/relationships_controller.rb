@@ -3,6 +3,9 @@ class Public::RelationshipsController < ApplicationController
 
   def create
     current_user.follow(params[:user_id])
+    @user = User.find(params[:user_id])
+    post = Post.find(params[:post_id])
+    post.create_notification_favorite!(current_user)
     redirect_to request.referer
   end
 

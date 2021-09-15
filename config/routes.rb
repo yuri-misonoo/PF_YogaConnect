@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         get 'followings' => 'relationships#followings'
         get 'followers' => 'relationships#followers'
       end
+      
+      resources :notification, only: [:index] 
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
     end
 
     resources :chats, only: [:show, :create]
-    resources :notification, only: [:index]
+    
   end
 
 

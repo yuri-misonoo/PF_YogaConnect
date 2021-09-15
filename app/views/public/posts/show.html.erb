@@ -28,7 +28,7 @@
       </div>
     <% end %>
 
-    <div id="comment_area"><!-- コメント一覧 -->
+    <div id="comment_area_<%= @post.id %>"><!-- コメント一覧 -->
       <%= render partial: 'public/post_comments/index', locals: { post: @post } %>
     </div>
 

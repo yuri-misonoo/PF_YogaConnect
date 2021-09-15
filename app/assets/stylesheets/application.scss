@@ -93,7 +93,7 @@ p{
   display:none;
 }
 
-/* カレンダーの円の色 */
+/* カレンダーの設定 */
 .fa-circle{
  color: $main-color;
 }
@@ -142,4 +142,9 @@ p{
   .has-events {}
 }
 
+/* 通知の未確認時のマークの設定 */
+.n-circle {
+  position: absolute;
+  color: $main-color;
+}
 
