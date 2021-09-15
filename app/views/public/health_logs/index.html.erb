@@ -24,15 +24,15 @@
               <%= link_to health_log.health_log_on, user_health_log_path(current_user, health_log), class: 'text-secondary' %>
             </td>
             <td>
-              <% if health_log.weight == nil %>
-                <span></span>
+              <% unless health_log.weight %>
+                <span>-</span>
               <% else %>
                 <%= link_to health_log.weight, user_health_logs_graph_path(current_user), class: 'text-secondary' %>
               <% end %>
             </td>
             <td>
-              <% if health_log.temperature == nil %>
-                <span></span>
+              <% unless health_log.temperature %>
+                <span>-</span>
               <% else %>
                 <%= link_to health_log.temperature, user_health_logs_graph_path(current_user), class: 'text-secondary' %>
               <% end %>
@@ -42,7 +42,7 @@
             </td>
             <td>
               <%= link_to user_health_logs_calendar_path(current_user), class: 'text-secondary' do %>
-                <% if health_log.is_active == true %>
+                <% if health_log.is_active %>
                   <span>実践した</span>
                 <% else %>
                   <span>実践してない</span>

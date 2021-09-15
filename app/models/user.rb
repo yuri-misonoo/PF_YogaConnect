@@ -38,5 +38,25 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  #自分からの通知(active_notifications)を明示的にクラス名とIDを指定して紐付ける
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  #相手からの通知(passive_notifications)を明示的にクラス名とIDを指定して紐付ける
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  
+  #フォローの通知
+  def create_notification_follow!(current_user)
+    #フォローボタンを連打されても、通知が一回しかいかないようにレコードを取得し、既にフォローされているか検索
+    tmp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
+    #フォローされた場合の通知レコードを作成
+    if tmp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+  
 end
 
