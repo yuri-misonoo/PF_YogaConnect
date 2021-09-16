@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+
+    <div class="search-form">
+      <%= form_with url: user_health_logs_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :search, placeholder: '2021-09-01' %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+    
+    <div>
+      <%= link_to '戻る', user
+    </div>
+
+    <div>
+      <%= render 'index', health_logs: @health_logs %>
+    </div>
+  </div>
+</div>

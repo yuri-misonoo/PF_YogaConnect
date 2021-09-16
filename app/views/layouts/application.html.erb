@@ -29,6 +29,9 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <li class="nav-item text-center">
+                  <%= link_to '', user_search_path, class: 'pl-2 nav-link fas fa-search' %>
+                </li>
                 <li class="nav-item">
                   <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-center" %>
                 </li>
@@ -44,6 +47,7 @@
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 nav-link text-center" %>
                 </li>
+
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
                   <%= link_to 'ユーザー一覧', admin_users_path, class: "nav-link text-center" %>
@@ -83,7 +87,7 @@
 
     <main class="mt-5">
       <div class="container">
-        
+
         <%= yield %>
       </div>
     </main>

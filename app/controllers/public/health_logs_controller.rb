@@ -67,14 +67,16 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def memo
-    #@health_logs = HealthLog.where(user_id: current_user.id).pluck(:health_log, :memo)
     @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(10)
   end
 
   def calendar
     @health_logs = HealthLog.where(user_id: current_user.id)
-    #HealthLog.where(user_id: current_user.id).pluck(:is_active, :health_log_on, :start_time)
-    #S@health_log = HealthLog.find_by(user_id: current_user.id, )
+  end
+
+  def search
+    #viewのformで受け取ったパラメータをモデルに渡す
+    @health_logs = HealthLog.search(params[:search]).page(params[:page]).per(10)
   end
 
   private

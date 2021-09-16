@@ -66,4 +66,12 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def self.search(search)
+    if search
+    Post.where(['body LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
 end
