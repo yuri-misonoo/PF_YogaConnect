@@ -49,6 +49,12 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, notice: '投稿を削除しました'
   end
 
+  def search
+    #viewのformで受け取ったパラメータをモデルに渡す
+    @posts = Post.search(params[:search])
+  end
+
+
   private
 
   def post_params

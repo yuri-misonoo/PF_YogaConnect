@@ -15,29 +15,31 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/:id/new' => 'users#new', as: 'new_user'
     patch 'users/:id/new' => 'users#create', as: 'user_update'
+    get 'users/search' => 'users#search', as: 'user_search'
     resources :users, only: [:show, :edit, :update, :destroy] do
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calendar' => 'health_logs#calendar'
+      get 'health_logs/search' => 'health_logs#search'
       resources :health_logs
 
       resource :relationships, only: [:create, :destroy] do
         get 'followings' => 'relationships#followings'
         get 'followers' => 'relationships#followers'
       end
-      
-      resources :notification, only: [:index] 
+
+      resources :notifications, only: [:index]
     end
+
+    get 'posts/search' => 'posts#search', as: 'post_search'
     resources :posts do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
 
     resources :chats, only: [:show, :create]
-    
+
   end
-
-
 
   namespace :admin do
     resources :users, only: [:index]

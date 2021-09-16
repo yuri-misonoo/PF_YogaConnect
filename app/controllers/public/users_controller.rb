@@ -25,6 +25,11 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(@user), notice: 'ユーザー情報を編集しました'
     end
   end
+  
+  def search
+    #viewのformで受け取ったパラメータをモデルに渡す
+    @users = User.search(params[:search])
+  end
 
 
   private
