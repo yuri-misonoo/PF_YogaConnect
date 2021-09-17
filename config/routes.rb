@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get 'users/:id/new' => 'users#new', as: 'new_user'
     patch 'users/:id/new' => 'users#create', as: 'user_update'
     get 'users/search' => 'users#search', as: 'user_search'
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
+    patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
+    resources :users, only: [:show, :edit, :update] do
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calendar' => 'health_logs#calendar'
@@ -42,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
     resources :post_comments, only: [:index, :show, :destroy]
   end

@@ -25,12 +25,24 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(@user), notice: 'ユーザー情報を編集しました'
     end
   end
-  
+
   def search
     #viewのformで受け取ったパラメータをモデルに渡す
     @users = User.search(params[:search])
   end
 
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = User.find(params[:id])
+    #is_deletedカラムをfalseにする
+    @user.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

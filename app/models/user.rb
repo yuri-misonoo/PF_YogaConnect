@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :health_logs, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
@@ -38,12 +38,12 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   #自分からの通知(active_notifications)を明示的にクラス名とIDを指定して紐付ける
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   #相手からの通知(passive_notifications)を明示的にクラス名とIDを指定して紐付ける
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  
+
   #フォローの通知
   def create_notification_follow!(current_user)
     #フォローボタンを連打されても、通知が一回しかいかないようにレコードを取得し、既にフォローされているか検索
@@ -57,7 +57,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def self.search(search)
     if search
     User.where(['name LIKE ?', "%#{search}%"])
@@ -65,6 +65,11 @@ class User < ApplicationRecord
       User.all
     end
   end
-  
+
+  #ログイン時に退会済みのユーザーをはじく
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end
 

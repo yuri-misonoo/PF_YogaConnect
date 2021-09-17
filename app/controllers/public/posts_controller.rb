@@ -16,13 +16,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    #@posts = Post.all.order(created_at: :desc)
 
     # フォローしているユーザーのid一覧
-    #folllowing_users = current_user.followings.pluck(:id)
+    folllowing_users = current_user.followings.pluck(:id)
     # 自身のidを一覧に追加する
-    #folllowing_users.push(current_user.id)
-    #@posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
+    folllowing_users.push(current_user.id)
+    @posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
   end
 
   def show
@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
 
   def search
     #viewのformで受け取ったパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).order(created_at: :desc)
   end
 
 
