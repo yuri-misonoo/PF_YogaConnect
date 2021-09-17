@@ -51,7 +51,7 @@ class Public::PostsController < ApplicationController
 
   def search
     #viewのformで受け取ったパラメータをモデルに渡す
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).order(created_at: :desc)
   end
 
 
