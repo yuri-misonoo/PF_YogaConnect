@@ -13,12 +13,13 @@
       <span>ユーザー登録数：<%= @users.count %>人</span>
     </div>
 
-    <table class="table mt-4">
+    <table class="table mt-4 text-secondary">
       <thead>
         <tr>
           <td>ID</td>
           <td>ユーザー名</td>
           <td>投稿数</td>
+          <td>ステータス</td>
         </tr>
       </thead>
       <% @users.each do |user| %>
@@ -26,13 +27,20 @@
           <tr>
             <td><%= user.id %></td>
             <td>
-              <%= link_to user_path(user), class: "text-secondary" do %>
+              <%= link_to admin_user_path(user), class: "text-secondary" do %>
                 <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
                 <%= user.name %>
               <% end %>
             </td>
             <td>
               <%= user.posts.count %>
+            </td>
+            <td>
+              <% unless user.is_deleted %>
+                有効
+              <% else %>
+                退会
+              <% end %>
             </td>
           </tr>
         </tbody>

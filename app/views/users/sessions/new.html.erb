@@ -2,6 +2,8 @@
   <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
     <h4 class="text-center">Log in</h4>
 
+    <%= flash[:error] %>
+
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
       <div class="form-group mt-5">

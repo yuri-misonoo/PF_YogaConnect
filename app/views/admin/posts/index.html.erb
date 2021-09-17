@@ -10,22 +10,7 @@
     </div>
 
     <div>
-      <% @posts.each do |post| %>
-        <div class="border-bottom pt-3">
-          <%= link_to user_path(post.user), class: "text-secondary" do %>
-            <%= attachment_image_tag post.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
-            <%= post.user.name %>
-          <% end %>
-          <%= post.post_time %><br>
-          <%= link_to admin_post_path(post), class: 'text-secondary' do %>
-            <%= post.body %><br>
-          <% end %>
-
-          <div class="text-right mb-3">
-            <%= link_to '削除', admin_post_path(post), method: :delete, "data-confirm" =>"本当に削除しますか？", class: " btn btn-secondary btn-sm btn-s" %>
-          </div>
-        </div>
-      <% end %>
+     <%= render 'index', posts: @posts %>
     </div>
   </div>
 </div>
