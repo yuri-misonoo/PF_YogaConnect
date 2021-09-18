@@ -13,6 +13,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id).order(created_at: :desc)
+    #その日の今日の記録を取得。Time.current.at_beginning_of_day..Time.current.at_end_of_dayで一日（範囲）を
+    @today_health_log = HealthLog.find_by(user_id: current_user.id, created_at: Time.current.at_beginning_of_day..Time.current.at_end_of_day)
   end
 
   def edit
