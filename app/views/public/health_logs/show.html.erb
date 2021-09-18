@@ -10,8 +10,8 @@
     <table class="table text-secondary mt-3">
       <tbody>
         <tr>
-          <td><%= link_to '体重', user_health_logs_graph_path(@user), class: 'text-secondary' %></td>
-          <td><%= @health_log.weight %>kg</td>
+          <td style="width:25%"><%= link_to '体重', user_health_logs_graph_path(@user), class: 'text-secondary' %></td>
+          <td style="width:75%"><%= @health_log.weight %>kg</td>
         </tr>
         <tr>
           <td><%= link_to '体温', user_health_logs_graph_path(@user), class: 'text-secondary' %></td>

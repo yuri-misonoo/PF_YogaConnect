@@ -64,7 +64,7 @@ body{
 
 /* pタグの文字サイズ */
 p{
- font-size: 30%;
+ font-size: 12px;
 }
 
 /* マイページのメニュー */
@@ -148,3 +148,7 @@ p{
   color: $main-color;
 }
 
+/* カレンダーのboxを表示 */
+.box{
+ display: block;
+}
