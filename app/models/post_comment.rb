@@ -4,6 +4,9 @@ class PostComment < ApplicationRecord
   belongs_to :post
   has_many :notifications, dependent: :destroy
 
+
+  validates :body, presence: true, obscenity: { sanitize: true }
+
   def comment_time
     created_at.strftime("%Y/%m/%d")
   end

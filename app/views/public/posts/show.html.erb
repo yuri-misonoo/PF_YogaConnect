@@ -28,6 +28,7 @@
       </div>
     <% end %>
 
+    <%= flash[:message] %>
     <div id="comment_area_<%= @post.id %>"><!-- コメント一覧 -->
       <%= render partial: 'public/post_comments/index', locals: { post: @post } %>
     </div>

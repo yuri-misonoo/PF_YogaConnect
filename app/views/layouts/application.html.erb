@@ -87,6 +87,7 @@
     </header>
       <% if flash[:notice] %>
         <p class="bg-info text-center text-info notice"><%= flash[:notice] %></p>
+        <%= flash[:error] %>
       <% end %>
 
     <main class="mt-5">

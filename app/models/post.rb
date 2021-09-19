@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :body, presence: true, length: { minimum: 10, maximum: 150 }
+  validates :body, presence: true, length: { minimum: 10, maximum: 150 }, obscenity: { sanitize: true }
 
   def post_time
     created_at.strftime("%Y/%m/%d")
@@ -65,7 +65,7 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
   #検索機能の定義
   def self.search(search)
     if search

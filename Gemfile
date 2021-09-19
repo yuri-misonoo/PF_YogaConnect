@@ -85,6 +85,8 @@ gem 'kaminari'
 
 gem 'rails-i18n', '~> 5.1'
 
+gem 'obscenity'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
