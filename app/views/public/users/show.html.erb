@@ -68,7 +68,12 @@
 
     <% if @user == current_user %>
       <div class="menu p-2 mt-4">
-        <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
+        <!-- 今日の記録のレコードがあるかないかで遷移先を変える -->
+        <% if @today_health_log.present? %>
+          <%= link_to '今日の記録', edit_user_health_log_path(current_user, @today_health_log), class: "text-secondary" %>
+        <% else %>
+          <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
+        <% end %>
         <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to 'ヨガ実践カレンダー', user_health_logs_calendar_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to '退会', users_unsubscribe_path(current_user), class: " text-secondary ml-4" %>
@@ -80,7 +85,7 @@
     </div>
 
     <div>
-      <%= render 'public/posts/post_index', posts: @user.posts %>
+      <%= render 'public/posts/post_index', posts: @posts %>
     </div>
 
   </div>

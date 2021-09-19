@@ -33,7 +33,11 @@
                   <%= link_to '', user_search_path, class: 'pl-2 nav-link fas fa-search' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-center" %>
+                  <% if @today_health_log.present? %>
+                    <%= link_to '今日の記録', edit_user_health_log_path(current_user, @today_health_log), class: "nav-link text-secondary" %>
+                  <% else %>
+                    <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-secondary" %>
+                  <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-center" %>
@@ -96,9 +100,8 @@
     <footer class="mt-5">
       <div class="container">
         <div class="row">
-          <div class="col-2 center-block mx-auto">
-            <p>心と体をつなぎ、人とつながる</p>
-            <%= image_tag 'logo.png', :size => '110x50' %>
+          <div class="col text-center">
+            <p>© 2021 Yoga Connect</p>
           </div>
         </div>
       </div>
