@@ -65,7 +65,7 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
+
   #検索機能の定義
   def self.search(search)
     if search
