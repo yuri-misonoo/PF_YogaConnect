@@ -1,0 +1,2 @@
+$("#comment_area_<%= @post.id %>").html("<%= escape_javascript(render partial: 'public/post_comments/index', locals: { post: @post }); %>")
+$("textarea").val('');

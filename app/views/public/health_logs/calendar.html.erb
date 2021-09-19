@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+
+    <div class="text-right">
+      <%= link_to '記録一覧へ', user_health_logs_path(current_user), class: 'btn btn-info btn-s' %>
+    </div>
+
+    <!-- カレンダーの日本語化は config>locales>ja.yml に記入 -->
+    <%= month_calendar(events: @health_logs) do |date, health_logs| %>
+      <%= date %>
+
+      <% health_logs.each do |health_log| %>
+        <div>
+          <% if health_log.is_active == true %>
+            <i class="fas fa-circle"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    テンプレート
+
+  </div>
+</div>
+
+
+
+

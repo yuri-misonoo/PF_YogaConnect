@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+    <h4 class=text-center>投稿一覧</h4>
+
+    <%= link_to '投稿検索する', post_search_path, class: 'fas fa-search text-secondary' %>
+
+    <%= render 'post_index', posts: @posts %>
+
+  </div>
+</div>
+
+
+

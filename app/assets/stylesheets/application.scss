@@ -1,0 +1,150 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "simple_calendar";
+
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+/* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
+@media (max-width: 992px) {
+ .nav-item{
+  background-color: #ffeeff;
+ }
+
+ .logo{
+  margin: 0 auto;
+ }
+ .header{
+  position: relative;
+   button{
+   position: absolute;
+   top: 10%;
+  }
+ }
+}
+
+$main-color: #d0b0ff;
+
+$sub-color: #808080;
+
+header{
+ background-color: $main-color;
+}
+
+footer{
+ background-color: $main-color;
+}
+
+/* 全体の文字色 */
+body{
+ color: $sub-color;
+}
+
+/* ボタンのサイズ */
+.btn-s{
+ font-size: 8%;
+}
+
+/* pタグの文字サイズ */
+p{
+ font-size: 30%;
+}
+
+/* マイページのメニュー */
+.menu{
+ background-color: $main-color;
+ text-align: center;
+ border-radius: 10% 5%;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+.pagination {
+  justify-content: center;
+}
+
+/* グラフのjavascriptのための記述 */
+.active{
+  display:block;
+}
+
+.hidden{
+  display:none;
+}
+
+/* カレンダーの設定 */
+.fa-circle{
+ color: $main-color;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {
+   text-align: center;
+  }
+  .wday-1 {
+   text-align: center;
+  }
+  .wday-2 {
+   text-align: center;
+  }
+  .wday-3 {
+   text-align: center;
+  }
+  .wday-4 {
+   text-align: center;
+  }
+  .wday-5 {
+   text-align: center;
+  }
+  .wday-6 {
+   text-align: center;
+  }
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+   color: $sub-color;
+   background-color: white;
+  }
+  .next-month {
+   color: $sub-color;
+   background-color: white;
+  }
+  .current-month {}
+
+  .has-events {}
+}
+
+/* 通知の未確認時のマークの設定 */
+.n-circle {
+  position: absolute;
+  color: $main-color;
+}
+

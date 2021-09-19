@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+    <h4 class="text-center">記録一覧</h4>
+
+    <%= link_to '日付で検索', user_health_logs_search_path, class: 'fas fa-search text-secondary' %>
+
+    <div class="text-right">
+      <%= link_to '今日のメモ一覧へ', user_health_logs_memo_path(current_user), class: 'btn btn-info btn-s' %>
+    </div>
+
+    <div class="mt-5">
+      <%= render 'index', health_logs: @health_logs %>
+    </div>
+
+  </div>
+</div>

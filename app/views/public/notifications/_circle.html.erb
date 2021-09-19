@@ -1,0 +1,8 @@
+<% if user == current_user %>
+  <% if unchecked_notifications.any? %>
+    <%= link_to '', user_notifications_path(current_user), class: 'text-secondary far fa-bell' %>
+    <i class="fas fa-circle n-circle"></i>
+  <% else %>
+    <%= link_to '', user_notifications_path(current_user), class: 'text-secondary far fa-bell' %>
+  <% end %>
+<% end %>
