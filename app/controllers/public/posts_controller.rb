@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: '投稿に成功しました！'
     else
-      render :new
+      render :new, error: '投稿は10文字以上入力してください！'
     end
   end
 
