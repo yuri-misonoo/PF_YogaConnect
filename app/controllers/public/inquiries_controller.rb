@@ -16,10 +16,8 @@ class Public::InquiriesController < ApplicationController
     # 入力値のチェック
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.valid?
-      # OK。確認画面を表示
       render :action => 'confirm'
     #else
-      # NG。入力画面を再表示
      # render :action => 'index'
     end
   end
@@ -35,7 +33,7 @@ class Public::InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.permit(:title, :message, :user_id)
+    params.permit(:title, :message, :user_id, :email, :name)
   end
 
 end
