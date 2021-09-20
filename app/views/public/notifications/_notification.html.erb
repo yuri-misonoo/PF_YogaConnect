@@ -13,7 +13,7 @@
         <span>あなたをフォローしました</span>
 
       <% when 'favorite' then %>
-        <span>いいねしました</span>
+        <span><%= link_to 'いいねしました', post_path(current_user, notification.post), class: "text-secondary" %></span>
 
       <% when 'post_comment' then %>
         <% if notification.post.user_id == visited.id %>

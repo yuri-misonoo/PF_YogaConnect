@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+    <h5 class="text-center">ヘルプページ</h5>
+
+
+    <div>
+      <h8>・お問い合わせ</h8>
+      <p><%= link_to 'こちら', user_inquiries_path(current_user) %></p>
+    </div>
+
+
+    <div>
+      <h8>・退会について</h>
+      <p>退会をご希望の方は<%= link_to 'こちら', users_unsubscribe_path(current_user) %></p>
+    </div>
+  </div>
+</div>

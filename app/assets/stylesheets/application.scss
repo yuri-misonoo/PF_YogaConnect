@@ -75,9 +75,9 @@ p{
 
 /* マイページのメニュー */
 .menu{
-  background-color: $main-color;
+  border: solid;
+  border-color: $main-color;
   text-align: center;
-  border-radius: 10% 5%;
 }
 
 /*ページネーション自体のデザイン*/
@@ -149,8 +149,8 @@ p{
 }
 
 /* 通知の未確認時のマークの設定 */
-.n-circle {
-  position: absolute;
+.fa-smile {
+
   color: $main-color;
 }
 

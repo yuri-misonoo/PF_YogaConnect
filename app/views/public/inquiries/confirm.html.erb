@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+    <h5 class="text-center">お問い合わせ確認画面</h5>
+    <%= form_with model: @inquiry, url: user_inquiries_thanks_path, local: true do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>名前</td>
+            <td><%#= @inquery.user.name %></td>
+          </tr>
+          <tr>
+            <td>タイトル</td>
+            <td><%= @inquery.title %></td>
+            <%= f.hidden_field :title %>
+          </tr>
+          <tr>
+            <td>お問い合わせ内容</td>
+            <td><%= @inquery.message %></td>
+            <%= f.hidden_field :message %>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="action text-center">
+        <%= f.submit '送信', class: 'btn btn-info btn-sm' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
