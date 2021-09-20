@@ -18,27 +18,48 @@
       </p>
     </div>
 
-    <div class="text-right mr-5 pr-5">
-      <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
+
+    <div class="text-align">
+      <table>
+          <tbody>
+            <h5>こんな人におすすめ</h5>
+            <tr>
+              <td>
+                <p>忙しくてストレスフルな人</p>
+                <p>自分を見つめ直す時間がほしい人</p>
+                <p>リラックスしたい人</p>
+                <p>寝付きの悪い人</p>
+                <p>冷えやだるさ、肩こり、むくみを解消したい人</p>
+                <p>キレイな体作りがしたい人</p>
+              </ul>
+            </td>
+            <td>
+              <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="ml-5 pl-5">
-      <h5 class="pl-5">こんな人におすすめ</h5>
-      <ul class="list">
-        <li>忙しくてストレスフルな人</li>
-        <li>自分を見つめ直す時間がほしい人</li>
-        <li>リラックスしたい人</li>
-        <li>寝付きの悪い人</li>
-        <li>冷えやだるさ、肩こり、むくみを解消したい人</li>
-        <li>キレイな体作りがしたい人</li>
-      </ul>
-    </div>
+
+
 
 
     <h6 class="text-center">
       ヨガは実践してすぐに効果がでるものではありません！<br>
       長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！
     </h6>
+
+
+
+<div>
+  <% if user_signed_in? %>
+    <span></span>
+  <% else %>
+    <p>さっそく始める！</p>
+    <%= link_to 'サインアップ', new_user_registration_path %>
+  <% end %>
+</div>
 
 
 </div>

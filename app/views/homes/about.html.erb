@@ -16,6 +16,13 @@
       </div>
 
     <p>タイムライン</p>
+    <div>
+      <% if user_signed_in? %>
+        <span></span>
+      <% else %>
+        <%= link_to 'サインアップ', new_user_registration_path %>
+      <% end %>
+    </div>
   </div>
 </div>
 

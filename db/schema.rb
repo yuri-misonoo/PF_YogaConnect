@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_065523) do
+ActiveRecord::Schema.define(version: 2021_09_20_114130) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2021_09_17_065523) do
     t.date "health_log_on"
     t.boolean "is_active", default: true
     t.datetime "start_time"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -119,6 +129,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_065523) do
     t.text "goal"
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
+    t.string "link"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

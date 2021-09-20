@@ -10,7 +10,10 @@
           <tbody>
             <tr>
               <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %></td>
-              <td><%= link_to user.name, user_path(user), class: "text-secondary" %></td>
+              <td>
+                <%= link_to user.name, user_path(user), class: "text-secondary" %>
+                <p class="text-secondary"><%= user.introduction %></p>
+              </td>
               <td><%= render 'public/relationships/follow', user: user %></td>
             </tr>
           </tbody>

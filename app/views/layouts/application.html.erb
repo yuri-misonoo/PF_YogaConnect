@@ -30,26 +30,22 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item text-center">
-                  <%= link_to '', user_search_path, class: 'pl-2 nav-link fas fa-search' %>
-                </li>
-                <li class="nav-item">
-                  <% if @today_health_log.present? %>
-                    <%= link_to '今日の記録', edit_user_health_log_path(current_user, @today_health_log), class: "nav-link text-secondary" %>
-                  <% else %>
-                    <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "nav-link text-secondary" %>
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to '投稿一覧', posts_path, class: "pl-2 nav-link text-center" %>
+                  <%= link_to '', post_search_path, class: 'fas fa-search nav-link text-secondary' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to '投稿する', new_post_path, class: "pl-2 nav-link text-center" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'タイムライン', posts_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'マイページ', user_path(current_user), class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "pl-2 nav-link text-center" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ヘルプページ', helps_path, class: "pl-2 nav-link text-center" %>
                 </li>
 
               <% elsif admin_signed_in? %>

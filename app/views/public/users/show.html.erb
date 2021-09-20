@@ -8,7 +8,7 @@
     <div class="d-flex">
       <div>
         <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
-        <%= @user.name %>
+        <strong><%= @user.name %></strong>
       </div>
 
       <div class="d-flex">
@@ -52,6 +52,10 @@
       <% if @user == current_user %>
         <%= link_to ' ', edit_user_path(current_user), class: "fas fa-user-edit" %>
       <% end %>
+      <div class="mt-1">
+        <p><i class="fas fa-link"></i>  <%= @user.link %></p>
+        <p>実践目標 : <%= @user.goal %></p>
+      </div>
     </div>
 
     <div class="d-flex mt-3">
@@ -76,15 +80,11 @@
         <% end %>
         <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-4" %>
         <%= link_to 'ヨガ実践カレンダー', user_health_logs_calendar_path(current_user), class: "text-secondary ml-4" %>
-        <%= link_to '退会', users_unsubscribe_path(current_user), class: " text-secondary ml-4" %>
       </div>
     <% end %>
 
-    <div class="text-center mt-4 border-bottom">
-      <h5>これまでの投稿</h5>
-    </div>
-
-    <div>
+    <div class="mt-5">
+      <h5 class="text-center">投稿一覧</h5>
       <%= render 'public/posts/post_index', posts: @posts %>
     </div>
 

@@ -29,14 +29,14 @@
       <% health_logs.each do |health_log| %>
         <div>
           <% if health_log.is_active == true %>
-            <i class="fas fa-circle" onclick="btn(<%= health_log.id %>);"></i>
+            <i class="far fa-smile fa-2x" onclick="btn(<%= health_log.id %>);"></i>
           <% end %>
         </div>
       <% end %>
     <% end %>
 
     <div class="text-center">
-      <i class="fas fa-circle"></i>をクリックして、実践内容を確認しよう！
+      <i class="far fa-smile"></i>をクリックして、実践内容を確認しよう！
       <% @health_logs.each do |health_log| %>
         <div class="box health_log_id_<%= health_log.id %> border p-3 mt-2">
           <%= health_log.health_log_on %>の実践内容<br>
