@@ -27,7 +27,6 @@ Rails.application.routes.draw do
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calendar' => 'health_logs#calendar'
-      get 'health_logs/search' => 'health_logs#search'
       resources :health_logs
 
       resource :relationships, only: [:create, :destroy] do
