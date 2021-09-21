@@ -23,8 +23,8 @@
 
     <% if @post.user.id == current_user.id %>
       <div class="text-right">
-        <%= link_to '編集', edit_post_path(@post), class: "btn btn-info btn-sm btn-s" %>
-        <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" =>"本当に削除しますか？", class: " btn btn-secondary btn-sm btn-s" %>
+        <%= link_to '編集', edit_post_path(@post), class: "btn btn-info btn-sm" %>
+        <%= link_to '削除', post_path(@post), method: :delete, "data-confirm" =>"本当に削除しますか？", class: " btn btn-secondary btn-sm" %>
       </div>
     <% end %>
 
@@ -41,7 +41,7 @@
         </div>
 
         <div class="action text-center">
-          <%= f.submit '送信', class: 'btn btn-info btn-s' %>
+          <%= f.submit '送信', class: 'btn btn-info btn-sm' %>
         </div>
       <% end %>
     </div>

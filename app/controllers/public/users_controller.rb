@@ -29,11 +29,6 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def search
-    #viewのformで受け取ったパラメータをモデルに渡す
-    @users = User.search(params[:search])
-  end
-
   def unsubscribe
     @user = current_user
   end
