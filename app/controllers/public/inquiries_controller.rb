@@ -6,12 +6,6 @@ class Public::InquiriesController < ApplicationController
   end
 
   def confirm
-    #@inquiry = Inquiry.new(inquiry_params)
-    #if @inquiry.save
-     # render :action => 'confirm'
-    #else
-     # render :action => 'index'
-    #end
     # 入力値のチェック
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.valid?
