@@ -9,9 +9,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path, notice: '投稿に成功しました！'
+      redirect_to posts_path, notice: '投稿に成功しました'
     else
-      render :new, error: '投稿は10文字以上入力してください！'
+      flash.now[:alert] = '投稿は10文字以上入力してください'
+      render :new
     end
   end
 
@@ -39,6 +40,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: '投稿内容を編集しました'
     else
+      flash.now[:alert] = '投稿は10文字以上入力してください'
       render :edit
     end
   end

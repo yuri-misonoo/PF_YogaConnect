@@ -27,7 +27,7 @@
 
 
 $(function(){
-  setTimeout("$('.flash').fadeOut('slow')", 2000);
+  setTimeout("$('.flash').fadeOut('slow')", 3000);
 })
 
 

@@ -34,10 +34,7 @@ class Public::HealthLogsController < ApplicationController
   def update
     @health_log = HealthLog.find(params[:id])
     @health_log.update(health_log_params)
-    redirect_to user_health_log_path(@health_log.user, @health_log), notice: '記録内容を保存しました'
-  end
-
-  def destroy
+    redirect_to user_health_log_path(@health_log.user, @health_log), notice: '記録内容を更新しました'
   end
 
   def graph

@@ -17,8 +17,9 @@ class Public::InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.valid?
       render :action => 'confirm'
-    #else
-     # render :action => 'index'
+    else
+      flash.now[:alert] = 'タイトルと内容どちらもご記入ください'
+      render :action => 'index'
     end
   end
 
