@@ -4,12 +4,9 @@ class HealthLog < ApplicationRecord
 
   belongs_to :user
   
-  def self.search(search)
-    if search
-      HealthLog.where(['health_log_on LIKE ?', "%#{search}%"])
-    else
-      HealthLog.all
-    end
+  def self.search(target_user, search)
+    query = HealthLog.where(user_id: target_user.id)
+    query.where(['health_log_on LIKE ?', "%#{search}%"]) if search
   end
 
 end

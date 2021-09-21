@@ -16,19 +16,19 @@
           <%= @user.posts.count %> <br> <p>投稿</p>
         </div>
 
-        <div class="text-center pt-4 pl-4"><!-- フォロワーの人数 -->
+        <div class="text-center pt-4 pl-3"><!-- フォロワーの人数 -->
           <%= link_to followers_user_relationships_path(@user), class: "text-secondary" do %>
             <%= @user.followers.count %> <br> <p>フォロワー</p>
           <% end %>
         </div>
 
-        <div class="text-center pt-4 pl-4"><!-- フォロー中の人数 -->
+        <div class="text-center pt-4 pl-3"><!-- フォロー中の人数 -->
           <%= link_to followings_user_relationships_path(@user), class: "text-secondary" do %>
             <%= @user.followings.count %> <br> <p>フォロー中</p>
           <% end %>
         </div>
 
-        <div class="text-center pt-4 pl-4">
+        <div class="text-center pt-4 pl-3">
           <% if @user == current_user %>
             <% unless current_user.goal_weight %>
               <span></span>
@@ -40,7 +40,7 @@
           <% end %>
         </div>
 
-        <div class="pt-4 pl-4">
+        <div class="pt-4 pl-3">
           <%= render 'public/notifications/circle', user: @user %>
         </div>
 
@@ -78,8 +78,8 @@
         <% else %>
           <%= link_to '今日の記録', new_user_health_log_path(current_user), class: "text-secondary" %>
         <% end %>
-        <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-4" %>
-        <%= link_to 'ヨガ実践カレンダー', user_health_logs_calendar_path(current_user), class: "text-secondary ml-4" %>
+        <%= link_to '記録一覧', user_health_logs_path(current_user), class: "text-secondary ml-3" %>
+        <%= link_to 'ヨガ実践カレンダー', user_health_logs_calendar_path(current_user), class: "text-secondary ml-3" %>
       </div>
     <% end %>
 

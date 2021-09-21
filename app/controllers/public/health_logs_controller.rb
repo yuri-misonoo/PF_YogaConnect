@@ -73,7 +73,8 @@ class Public::HealthLogsController < ApplicationController
 
   def search
     #viewのformで受け取ったパラメータをモデルに渡す
-    @health_logs = HealthLog.search(params[:search]).page(params[:page]).per(10)
+    @health_logs = HealthLog.search(current_user, params[:search]).page(params[:page]).per(10)
+    #@health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

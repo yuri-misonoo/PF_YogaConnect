@@ -2,7 +2,6 @@ class Public::InquiriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @inquery = Inquiry.new
     render :action => 'index'
   end
 
@@ -34,7 +33,7 @@ class Public::InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.permit(:title, :message, :user_id, :email, :name)
+    params.require(:inquiry).permit(:title, :message, :user_id, :email, :name)
   end
 
 end
