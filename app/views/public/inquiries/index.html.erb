@@ -2,7 +2,8 @@
   <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
     <h5 class="text-center">お問い合わせ</h5>
     <div>
-      <%= form_with model: @inquiry, url: user_inquiries_confirm_path, local: true do |f| %>
+      <!-- すぐに保存するのではなく、確認画面がある場合はインスタンスではなくモデル名で書く -->
+      <%= form_with model: Inquiry, url: user_inquiries_confirm_path, local: true do |f| %>
         <div class="form-group">
           <%= f.label :title, 'タイトル', class: "form-label" %>
           <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "記録について" %>

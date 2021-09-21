@@ -67,7 +67,7 @@
         <div class="btn btn-outline-secondary btn-sm" onclick="btn4();">一ヶ月の推移</div>
       </div>
 
-      <div class='graph active' id="temperature-graph1">
+      <div class='graph active mt-3' id="temperature-graph1">
         <h6 class="text-center">一週間の推移</h6>
         <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
       </div>
