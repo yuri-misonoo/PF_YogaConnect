@@ -26,6 +26,11 @@
 //= require Chart.bundle
 
 
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+})
+
+
 
 
 
