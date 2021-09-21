@@ -2,29 +2,32 @@
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
 
-  <%= link_to user_path(visitor) do %>
-    <%= attachment_image_tag visitor, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
-  <% end %>
-  <%= visitor.name %>さんが
+  <div class="p-1 border-bottom">
+    <%= link_to user_path(visitor) do %>
+      <%= attachment_image_tag visitor, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+    <% end %>
+    <%= visitor.name %>さんが
 
-  <% case notification.action %>
-    <% when 'follow' then %>
-      <span>あなたをフォローしました</span>
+    <% case notification.action %>
+      <% when 'follow' then %>
+        <span>あなたをフォローしました</span>
 
-    <% when 'favorite' then %>
-      <span>いいねしました</span>
+      <% when 'favorite' then %>
+        <span><%= link_to 'いいねしました', post_path(notification.post), class: "text-secondary" %></span>
 
-    <% when 'post_comment' then %>
-      <% if notification.post.user_id == visited.id %>
-        <% link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %>
-      <% else %>
-        <%= link_to user_path(visitor) do %>
-          <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+      <% when 'post_comment' then %>
+        <% if notification.post.user_id == visited.id %>
+          <% link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %>
+        <% else %>
+          <%= link_to user_path(visitor) do %>
+            <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+          <% end %>
+          <% notification.post.user.name + 'さんの投稿' %>
         <% end %>
-        <% notification.post.user.name + 'さんの投稿' %>
-      <% end %>
-      <span>にコメントしました</span>
-      <!--p>%= PostComment.find_by(id: notification.post_comment_id)&.post_comment %></p>-->
-      <p class="text-right"><%= time_ago_in_words(notification.created_at).upcase %></p>
-  <% end %>
+        <span>にコメントしました</span>
+    <% end %>
+
+    <p class="text-right"><%= time_ago_in_words(notification.created_at).upcase %>前</p>
+  </div>
+
 <% end %>

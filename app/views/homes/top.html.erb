@@ -1,5 +1,65 @@
-<h2>心も体もヨガで癒やそう</h2>
+<div class="container text-center">
+  <%= image_tag 'morning_yoga.png', class: "main-image" %>
+</div>
 
-<h5>どんなサイトか</h5>
 
-<h5>ヨガの特徴</h5>
+<div class="row mx-auto">
+  <div class="col mx-auto">
+    <h4 class="text-center mt-5">心も体もヨガで癒やそう</h4>
+
+    <div class="text-center mt-3">
+      <h5>ヨガとは</h5>
+      <p>
+        「ヨガ」とはサンスクリット語で「つながり」を意味しています。<br>
+        心と体、魂がつながっている状態のことを表し、呼吸、姿勢、瞑想を組み合わせて<br>
+        心身の緊張をほぐし、心の安定とやすらぎを得るものです。<br>
+        具体的には「調和」「統一」「バランス」を意味し、体・心・呼吸・食べ物など、<br>
+        あらゆるカテゴリーと関係しています。
+      </p>
+    </div>
+
+
+    <div class="text-align">
+      <table>
+          <tbody>
+            <h5>こんな人におすすめ</h5>
+            <tr>
+              <td>
+                <p>忙しくてストレスフルな人</p>
+                <p>自分を見つめ直す時間がほしい人</p>
+                <p>リラックスしたい人</p>
+                <p>寝付きの悪い人</p>
+                <p>冷えやだるさ、肩こり、むくみを解消したい人</p>
+                <p>キレイな体作りがしたい人</p>
+              </ul>
+            </td>
+            <td>
+              <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+    <h6 class="text-center">
+      ヨガは実践してすぐに効果がでるものではありません！<br>
+      長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！
+    </h6>
+
+
+
+<div>
+  <% if user_signed_in? %>
+    <span></span>
+  <% else %>
+    <p>さっそく始める！</p>
+    <%= link_to 'サインアップ', new_user_registration_path %>
+  <% end %>
+</div>
+
+
+</div>

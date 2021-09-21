@@ -9,20 +9,21 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path, notice: '投稿に成功しました！'
+      redirect_to posts_path, notice: '投稿に成功しました'
     else
+      flash.now[:alert] = '投稿は10文字以上入力してください'
       render :new
     end
   end
 
   def index
-    #@posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc)
 
-    # フォローしているユーザーのid一覧
-    folllowing_users = current_user.followings.pluck(:id)
+    # フォローしているユーザーのidを取得
+    #folllowing_users = current_user.followings.pluck(:id)
     # 自身のidを一覧に追加する
-    folllowing_users.push(current_user.id)
-    @posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
+    #folllowing_users.push(current_user.id)
+    #@posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
   end
 
   def show
@@ -39,6 +40,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: '投稿内容を編集しました'
     else
+      flash.now[:alert] = '投稿は10文字以上入力してください'
       render :edit
     end
   end

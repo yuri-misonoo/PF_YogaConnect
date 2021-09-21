@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+    <h5 class="text-center">ヘルプページ</h5>
+
+    <div class="mt-4">
+      <strong>・投稿方法について</strong><br>
+      <span>
+        投稿の仕方がわからない、投稿の詳細ページが見たい、コメントしたい等、投稿に関することは
+        <%= link_to 'こちら', helps_post_method_path %>
+      </span>
+    </div>
+
+    <div class="mt-4">
+      <strong>・記録の利用について</strong><br>
+      <span>
+        記録の仕方がわからない、体重や体温のグラフの見方がわからない、カレンダーの見方がわからない等、
+        毎日の記録に関することは
+        <%= link_to 'こちら', helps_log_method_path %>
+      </span>
+    </div>
+
+    <div class="mt-4">
+      <strong>・お問い合わせ</strong><br>
+      <span>
+        ヘルプページの記載では解決できなかったお困りのことや、ご要望等ございましたら
+        <%= link_to 'こちら', user_inquiries_path(current_user) %>よりお問い合わせください。
+      </span>
+    </div>
+
+
+    <div class="mt-4">
+      <strong>・退会について</strong><br>
+      <span>退会をご希望の方は<%= link_to 'こちら', users_unsubscribe_path(current_user) %></span>
+    </div>
+  </div>
+</div>

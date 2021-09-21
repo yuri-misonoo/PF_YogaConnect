@@ -14,8 +14,10 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
+  
+  has_many :inquirues, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }, obscenity: { sanitize: true }
   validates :introduction, length: { maximum: 70 }
 
   # 自分がフォローされる（被フォロー）側の関係性

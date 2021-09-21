@@ -4,8 +4,8 @@
       <th>日付</th>
       <th>体重</th>
       <th>体温</th>
-      <th>元気度</th>
-      <th>ヨガ実践</th>
+      <th>体調</th>
+      <th>ヨガ</th>
     </tr>
   </thead>
 
@@ -13,32 +13,30 @@
     <tbody>
       <tr>
         <td>
-          <%= link_to health_log.health_log_on, user_health_log_path(current_user, health_log), class: 'text-secondary' %>
+          <%= link_to health_log.health_log_on, user_health_log_path(current_user, health_log), class: 'text-info' %>
         </td>
-        <td>
+        <td class='text-secondary'>
           <% unless health_log.weight %>
             <span>-</span>
           <% else %>
-            <%= link_to health_log.weight, user_health_logs_graph_path(current_user), class: 'text-secondary' %>
+            <%= health_log.weight %>
           <% end %>
         </td>
-        <td>
+        <td class='text-secondary'>
           <% unless health_log.temperature %>
             <span>-</span>
           <% else %>
-            <%= link_to health_log.temperature, user_health_logs_graph_path(current_user), class: 'text-secondary' %>
+            <%= health_log.temperature %>
           <% end %>
         </td>
         <td class="text-secondary">
           <%= health_log.feeling %>
         </td>
-        <td>
-          <%= link_to user_health_logs_calendar_path(current_user), class: 'text-secondary' do %>
-            <% if health_log.is_active %>
-              <span>実践した</span>
-            <% else %>
-              <span>実践してない</span>
-            <% end %>
+        <td class='text-secondary'>
+          <% if health_log.is_active %>
+            <i class="fas fa-check"></i>
+          <% else %>
+            <span>-</span>
           <% end %>
         </td>
       </tr>

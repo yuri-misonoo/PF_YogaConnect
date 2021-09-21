@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'inquiries/index'
+    get 'inquiries/confirm'
+    get 'inquiries/thanks'
+  end
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
@@ -31,6 +36,10 @@ Rails.application.routes.draw do
       end
 
       resources :notifications, only: [:index]
+
+      get   'inquiries'         => 'inquiries#index'
+      post  'inquiries/confirm' => 'inquiries#confirm'
+      post  'inquiries/thanks'  => 'inquiries#thanks'
     end
 
     get 'posts/search' => 'posts#search', as: 'post_search'
@@ -40,6 +49,11 @@ Rails.application.routes.draw do
     end
 
     resources :chats, only: [:show, :create]
+
+    get 'helps/post_method' => 'helps#post_method'
+    get 'helps/log_method' => 'helps#log_method'
+    resources :helps, only: [:index]
+
 
   end
 
