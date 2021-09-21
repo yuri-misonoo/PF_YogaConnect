@@ -15,14 +15,14 @@
         <td>
           <%= link_to health_log.health_log_on, user_health_log_path(current_user, health_log), class: 'text-info' %>
         </td>
-        <td>
+        <td class='text-secondary'>
           <% unless health_log.weight %>
             <span>-</span>
           <% else %>
             <%= health_log.weight %>
           <% end %>
         </td>
-        <td>
+        <td class='text-secondary'>
           <% unless health_log.temperature %>
             <span>-</span>
           <% else %>
@@ -32,7 +32,7 @@
         <td class="text-secondary">
           <%= health_log.feeling %>
         </td>
-        <td>
+        <td class='text-secondary'>
           <% if health_log.is_active %>
             <i class="fas fa-check"></i>
           <% else %>
