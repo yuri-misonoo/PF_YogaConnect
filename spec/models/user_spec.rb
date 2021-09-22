@@ -100,6 +100,5 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:followings).macro).to eq :has_many
       end
     end
-
   end
 end
