@@ -85,25 +85,24 @@
       </nav>
     </header>
 
-    <main class="mt-2">
+    <main>
       <div class="container">
         <% if flash[:notice] %>
-          <div class="alert alert-info text-center flash">
+          <div class="alert alert-info text-center flash mt-3">
             <%= flash[:notice] %>
           </div>
         <% end %>
 
         <% if flash[:alert] %>
-          <div class="alert alert-danger text-center flash">
+          <div class="alert alert-danger text-center flash mt-3">
             <%= flash[:alert] %>
           </div>
         <% end %>
 
       </div>
 
-      <div class="container mt-5">
-        <%= yield %>
-      </div>
+      <%= yield %>
+
     </main>
 
     <footer class="mt-5">

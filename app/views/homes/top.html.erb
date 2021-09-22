@@ -1,7 +1,6 @@
-<div class="image">
+<div>
   <%= image_tag 'morning_yoga.png', class: "main-img" %>
 </div>
-
 
 <div class="row mx-auto">
   <div class="col mx-auto">
@@ -17,49 +16,46 @@
         あらゆるカテゴリーと関係しています。
       </p>
     </div>
-
-
-    <div class="text-align">
-      <table>
-          <tbody>
-            <h5>こんな人におすすめ</h5>
-            <tr>
-              <td>
-                <p>忙しくてストレスフルな人</p>
-                <p>自分を見つめ直す時間がほしい人</p>
-                <p>リラックスしたい人</p>
-                <p>寝付きの悪い人</p>
-                <p>冷えやだるさ、肩こり、むくみを解消したい人</p>
-                <p>キレイな体作りがしたい人</p>
-              </ul>
-            </td>
-            <td>
-              <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-
-
-
-    <h6 class="text-center">
-      ヨガは実践してすぐに効果がでるものではありません！<br>
-      長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！
-    </h6>
-
-
-
-<div>
-  <% if user_signed_in? %>
-    <span></span>
-  <% else %>
-    <p>さっそく始める！</p>
-    <%= link_to 'サインアップ', new_user_registration_path %>
-  <% end %>
+  </div>
 </div>
 
+<div class="row">
+  <div class="col mx-auto">
+    <table class="mx-auto">
+      <tbody>
+        <h5 class="text-center mt-5">こんな人におすすめ</h5>
+        <tr>
+          <td style="width:50%">
+            <p>忙しくてストレスフルな人</p>
+            <p>自分を見つめ直す時間がほしい人</p>
+            <p>リラックスしたい人</p>
+            <p>寝付きの悪い人</p>
+            <p>冷えやだるさ、肩こり、むくみを解消したい人</p>
+            <p>キレイな体作りがしたい人</p>
+          </td>
+          <td style="width:50%">
+            <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<div class="row mt-5">
+  <div class="col mx-auto">
+    <h6 class="text-center">
+      <strong>ヨガは実践してすぐに効果がでるものではありません！<br>
+              長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！</strong>
+    </h6>
+
+    <div class="mt-4 text-center">
+      <% if user_signed_in? %>
+        <span></span>
+      <% else %>
+        さっそく始める！ <i class="fas fa-hand-point-right"></i> <%= link_to 'サインアップ', new_user_registration_path %>
+
+      <% end %>
+    </div>
+  </div>
 </div>

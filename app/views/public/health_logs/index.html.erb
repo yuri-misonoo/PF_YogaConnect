@@ -1,18 +1,21 @@
-<div class="row">
-  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
-    <h4 class="text-center">記録一覧</h4>
-
-    <%= link_to '日付で検索', user_health_logs_search_path(current_user), class: 'fas fa-search text-secondary' %>
-
-    <div class="text-right">
-      <%= link_to '体重・体温グラフ', user_health_logs_graph_path(current_user), class: 'btn btn-outline-info btn-sm' %>
-      <%= link_to '今日のメモ一覧', user_health_logs_memo_path(current_user), class: 'btn btn-outline-info btn-sm' %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+      <h4 class="text-center">記録一覧</h4>
+  
+      <%= link_to '日付で検索', user_health_logs_search_path(current_user), class: 'fas fa-search text-secondary' %>
+  
+      <div class="text-right">
+        <%= link_to '体重・体温グラフ', user_health_logs_graph_path(current_user), class: 'btn btn-outline-info btn-sm' %>
+        <%= link_to '今日のメモ一覧', user_health_logs_memo_path(current_user), class: 'btn btn-outline-info btn-sm' %>
+      </div>
+  
+  
+      <div class="mt-5">
+        <%= render 'index', health_logs: @health_logs %>
+      </div>
+  
     </div>
-
-
-    <div class="mt-5">
-      <%= render 'index', health_logs: @health_logs %>
-    </div>
-
   </div>
 </div>
+  

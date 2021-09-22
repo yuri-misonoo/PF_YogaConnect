@@ -1,16 +1,18 @@
-<div class="row">
-  <div class="col-lg-7 col-md-10 col-sm-11 mx-auto">
-    <h4 class="text-center">退会画面</h4>
-    <div class="text-center mt-3">
-      退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
-      再度ご利用をいただくには、新規登録のお手続きが必要になります。<br>
-      本当に退会してよろしいですか？
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-7 col-md-10 col-sm-11 mx-auto">
+      <h4 class="text-center">退会画面</h4>
+      <div class="text-center mt-3">
+        退会手続きをされますと、全てのサービスがご利用いただけなくなります。<br>
+        再度ご利用をいただくには、新規登録のお手続きが必要になります。<br>
+        本当に退会してよろしいですか？
+      </div>
+  
+      <div class="text-center mt-5">
+        <%= link_to '退会する', users_withdraw_path, method: :patch, class: "btn btn-info btn-sm" %>
+        <%= link_to '退会しない', user_path(current_user), class: "btn btn-secondary btn-sm" %>
+      </div>
+  
     </div>
-
-    <div class="text-center mt-5">
-      <%= link_to '退会する', users_withdraw_path, method: :patch, class: "btn btn-info btn-sm" %>
-      <%= link_to '退会しない', user_path(current_user), class: "btn btn-secondary btn-sm" %>
-    </div>
-
   </div>
 </div>

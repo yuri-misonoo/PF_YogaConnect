@@ -1,46 +1,47 @@
-<div class="row">
-  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
-
-  <h4 class="text-center">ユーザー情報詳細</h4>
-
-
-    <div class="d-flex">
-      <div>
-        <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
-        <%= @user.name %>
-      </div>
-
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+  
+    <h4 class="text-center">ユーザー情報詳細</h4>
+  
       <div class="d-flex">
-        <div class="text-center pt-4 pl-3"><!-- 投稿数 -->
-          <%= @user.posts.count %> <br> <p>投稿</p>
+        <div>
+          <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
+          <%= @user.name %>
         </div>
-
-        <div class="text-center pt-4 pl-4"><!-- フォロワーの人数 -->
-          <%= @user.followers.count %> <br> <p>フォロワー</p>
+  
+        <div class="d-flex">
+          <div class="text-center pt-4 pl-3"><!-- 投稿数 -->
+            <%= @user.posts.count %> <br> <p>投稿</p>
+          </div>
+  
+          <div class="text-center pt-4 pl-4"><!-- フォロワーの人数 -->
+            <%= @user.followers.count %> <br> <p>フォロワー</p>
+          </div>
+  
+          <div class="text-center pt-4 pl-4"><!-- フォロー中の人数 -->
+            <%= @user.followings.count %> <br> <p>フォロー中</p>
+          </div>
+  
+          <div class="text-center pt-4 pl-4">
+            <% unless @user.is_deleted %>
+              <%= link_to '有効', edit_admin_user_path, class: "btn btn-info btn-sm" %>
+            <% else %>
+              <%= link_to '退会', edit_admin_user_path, class: "btn btn-secondary btn-sm" %>
+            <% end %>
+          </div>
+  
         </div>
-
-        <div class="text-center pt-4 pl-4"><!-- フォロー中の人数 -->
-          <%= @user.followings.count %> <br> <p>フォロー中</p>
-        </div>
-
-        <div class="text-center pt-4 pl-4">
-          <% unless @user.is_deleted %>
-            <%= link_to '有効', edit_admin_user_path, class: "btn btn-info btn-sm" %>
-          <% else %>
-            <%= link_to '退会', edit_admin_user_path, class: "btn btn-secondary btn-sm" %>
-          <% end %>
-        </div>
-
       </div>
+  
+      <div class="text-center mt-4 border-bottom">
+        <h5>これまでの投稿</h5>
+      </div>
+  
+      <div>
+        <%= render 'admin/posts/index', posts: @user.posts %>
+      </div>
+  
     </div>
-
-    <div class="text-center mt-4 border-bottom">
-      <h5>これまでの投稿</h5>
-    </div>
-
-    <div>
-      <%= render 'admin/posts/index', posts: @user.posts %>
-    </div>
-
   </div>
 </div>
