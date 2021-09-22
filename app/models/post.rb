@@ -69,7 +69,7 @@ class Post < ApplicationRecord
   #検索機能の定義
   def self.search(search)
     if search
-    Post.where(['body LIKE ?', "%#{search}%"])
+      Post.where(['body LIKE ?', "%#{search}%"])
     else
       Post.all
     end
