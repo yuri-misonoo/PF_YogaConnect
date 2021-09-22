@@ -59,6 +59,9 @@
                   <%= link_to 'コメント一覧', admin_post_comments_path, class: "pl-2 nav-link text-center" %>
                 </li>
                 <li class="nav-item">
+                  <%= link_to 'お問い合わせ一覧', admin_inquiries_path, class: "pl-2 nav-link text-center" %>
+                </li>
+                <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "pl-2 nav-link text-center" %>
                 </li>
               <% else %>
@@ -82,24 +85,24 @@
       </nav>
     </header>
 
-    <main class="mt-2">
+    <main>
       <div class="container">
         <% if flash[:notice] %>
-          <div class="alert alert-info text-center flash">
+          <div class="alert alert-info text-center flash mt-3">
             <%= flash[:notice] %>
           </div>
         <% end %>
 
         <% if flash[:alert] %>
-          <div class="alert alert-danger text-center flash">
+          <div class="alert alert-danger text-center flash mt-3">
             <%= flash[:alert] %>
           </div>
         <% end %>
+
       </div>
 
-      <div class="container mt-5">
-        <%= yield %>
-      </div>
+      <%= yield %>
+
     </main>
 
     <footer class="mt-5">

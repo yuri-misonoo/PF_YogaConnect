@@ -44,7 +44,7 @@ describe 'userコントローラのテスト' do
 
     context '登録成功のテスト' do
       before do
-        #fill_in 'user[profile_image]', with: user.profile_image
+        # fill_in 'user[profile_image]', with: user.profile_image
         fill_in 'user[introduction]', with: user.introduction
         fill_in 'user[goal_weight]', with: user.goal_weight
         fill_in 'user[goal]', with: user.goal
@@ -63,9 +63,9 @@ describe 'userコントローラのテスト' do
     end
 
     context '表示の確認' do
-      #it 'URLが正しい' do
-        #expect(page).to eq('/users/' + user.id.to_s)
-      #end
+      # it 'URLが正しい' do
+      # expect(page).to eq('/users/' + user.id.to_s)
+      # end
 
       it '今日の記録のリンクが表示される' do
         expect(page).to have_link '今日の記録', href: new_user_health_log_path(user)
@@ -136,5 +136,4 @@ describe 'userコントローラのテスト' do
       end
     end
   end
-
 end

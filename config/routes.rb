@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   namespace :public do
     get 'inquiries/index'
     get 'inquiries/confirm'
@@ -9,12 +8,12 @@ Rails.application.routes.draw do
   get 'homes/about' => 'homes#about'
 
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
   }
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions'
+    sessions: 'admins/sessions',
   }
 
   scope module: :public do
@@ -53,14 +52,12 @@ Rails.application.routes.draw do
     get 'helps/post_method' => 'helps#post_method'
     get 'helps/log_method' => 'helps#log_method'
     resources :helps, only: [:index]
-
-
   end
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
     resources :post_comments, only: [:index, :show, :destroy]
+    resources :inquiries, only: [:index, :show]
   end
-
 end

@@ -1,58 +1,60 @@
-<div class="row">
-  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
-    <h4 class="text-center">ユーザー一覧</h4>
-
-    <div class="search-form mt-5">
-      <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
-        <%= f.submit '検索' %>
-      <% end %>
-    </div>
-
-    <div class="text-right">
-      <span>ユーザー登録数：<%= @users.count %>人</span>
-    </div>
-
-    <table class="table mt-4 text-secondary">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>ユーザー名</td>
-          <td>投稿数</td>
-          <td>ステータス</td>
-        </tr>
-      </thead>
-      <% @users.each do |user| %>
-        <tbody>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+      <h4 class="text-center">ユーザー一覧</h4>
+  
+      <div class="search-form mt-5">
+        <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search %>
+          <%= f.submit '検索' %>
+        <% end %>
+      </div>
+  
+      <div class="text-right">
+        <span>ユーザー登録数：<%= @users.count %>人</span>
+      </div>
+  
+      <table class="table mt-4 text-secondary">
+        <thead>
           <tr>
-            <td><%= user.id %></td>
-            <td>
-              <%= link_to admin_user_path(user), class: "text-secondary" do %>
-                <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
-                <%= user.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= user.posts.count %>
-            </td>
-            <td>
-              <% unless user.is_deleted %>
-                有効
-              <% else %>
-                退会
-              <% end %>
-            </td>
+            <td>ID</td>
+            <td>ユーザー名</td>
+            <td>投稿数</td>
+            <td>ステータス</td>
           </tr>
-        </tbody>
-      <% end %>
-    </table>
-
-  <div>
-    <label>日別ユーザー登録者数（総ユーザー数： <%= @users.count %>）</label>
+        </thead>
+        <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td><%= user.id %></td>
+              <td>
+                <%= link_to admin_user_path(user), class: "text-secondary" do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= user.posts.count %>
+              </td>
+              <td>
+                <% unless user.is_deleted %>
+                  有効
+                <% else %>
+                  退会
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+  
     <div>
-      <%= line_chart @new_users, download: true, curve: false, series: false, min: 0, colors: ['#0099FF'] %>
+      <label>日別ユーザー登録者数（総ユーザー数： <%= @users.count %>）</label>
+      <div>
+        <%= line_chart @new_users, download: true, curve: false, series: false, min: 0, colors: ['#0099FF'] %>
+      </div>
     </div>
-  </div>
-
+  
+    </div>
   </div>
 </div>

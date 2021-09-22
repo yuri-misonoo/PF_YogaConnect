@@ -2,17 +2,10 @@ class Public::InquiriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @inquery = Inquiry.new
     render :action => 'index'
   end
 
   def confirm
-    #@inquiry = Inquiry.new(inquiry_params)
-    #if @inquiry.save
-     # render :action => 'confirm'
-    #else
-     # render :action => 'index'
-    #end
     # 入力値のチェック
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.valid?
@@ -26,15 +19,16 @@ class Public::InquiriesController < ApplicationController
   def thanks
     # メール送信
     @inquiry = Inquiry.new(inquiry_params)
-    InquiryMailer.received_email(@inquiry).deliver
-    # 完了画面を表示
-    render :action => 'thanks'
+    if @inquiry.save
+      InquiryMailer.received_email(@inquiry).deliver
+      # 完了画面を表示
+      render :action => 'thanks'
+    end
   end
 
   private
 
   def inquiry_params
-    params.permit(:title, :message, :user_id, :email, :name)
+    params.require(:inquiry).permit(:title, :message, :user_id, :email, :name)
   end
-
 end

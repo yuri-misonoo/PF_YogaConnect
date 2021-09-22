@@ -1,6 +1,6 @@
 <!-- 6~8行目→　ページ読み込み時に発火するイベントを記述。6行目の書き方覚えておく
-10行目→　btn(health_log_id)に32行目の<%#= health_log.id %>を渡す
-11~12行目→　hideで全部の要素非表示。39行目のhealth_log_id_<%#= health_log.id %>に当てはまるように + を使って記述しshowで表示 -->
+10行目→　btn(health_log_id)に33行目の<%#= health_log.id %>を渡す
+11~12行目→　hideで全部の要素非表示。42行目のhealth_log_id_<%#= health_log.id %>に当てはまるように + を使って記述しshowで表示 -->
 
 <script>
   $(document).on('ready turbolinks:load', function(){
@@ -14,37 +14,38 @@
 
 </script>
 
-
-<div class="row">
-  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
-
-    <div class="text-right">
-      <%= link_to '記録一覧へ', user_health_logs_path(current_user), class: 'btn btn-info btn-sm' %>
-    </div>
-
-    <!-- カレンダーの日本語化は config>locales>ja.yml に記入 -->
-    <%= month_calendar(events: @health_logs) do |date, health_logs| %>
-      <%= date %>
-
-      <% health_logs.each do |health_log| %>
-        <div>
-          <% if health_log.is_active == true %>
-            <i class="far fa-smile fa-2x" onclick="btn(<%= health_log.id %>);"></i>
-          <% end %>
-        </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+  
+      <div class="text-right">
+        <%= link_to '記録一覧へ', user_health_logs_path(current_user), class: 'btn btn-info btn-sm' %>
+      </div>
+  
+      <!-- カレンダーの日本語化は config>locales>ja.yml に記入 -->
+      <%= month_calendar(events: @health_logs) do |date, health_logs| %>
+        <%= date %>
+  
+        <% health_logs.each do |health_log| %>
+          <div>
+            <% if health_log.is_active == true %>
+              <i class="far fa-smile fa-2x" onclick="btn(<%= health_log.id %>);"></i>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-
-    <div class="text-center">
-      <i class="far fa-smile"></i>をクリックして、実践内容を確認しよう！
-      <% @health_logs.each do |health_log| %>
-        <div class="box health_log_id_<%= health_log.id %> border p-3 mt-2">
-          <%= health_log.health_log_on %>の実践内容<br>
-          <%= health_log.exercise %>
-        </div>
-      <% end %>
+  
+      <div class="text-center">
+        <i class="far fa-smile"></i>をクリックして、実践内容を確認しよう！
+        <% @health_logs.each do |health_log| %>
+          <div class="box health_log_id_<%= health_log.id %> border p-3 mt-2">
+            <%= health_log.health_log_on %>の実践内容<br>
+            <%= health_log.exercise %>
+          </div>
+        <% end %>
+      </div>
+  
     </div>
-
   </div>
 </div>
 

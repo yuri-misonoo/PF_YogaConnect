@@ -35,52 +35,71 @@
 
 </script>
 
-<div class="row">
-  <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
-    <h4 class="text-center">推移のグラフ</h4>
-
-    <h5 class="text-center mt-5">体重の推移</h5>
-
-    <div class="mt-3">
-      <div class="text-right">
-        <!-- onclickなどのイベントはHTMLに書くのが一般的 -->
-        <div class="btn btn-outline-info btn-sm" onclick="btn1();">一週間の推移</div>
-        <div class="btn btn-outline-secondary btn-sm" onclick="btn2();">一ヶ月の推移</div>
-      </div>
-
-      <div class="graph mt-3 active", id="weight-graph1">
-        <h6 class="text-center">一週間の推移</h6>
-        <%= line_chart @weekly_weight, download: true, curve: false, series: false, min: 30, colors: ['#0099FF'] %>
-      </div>
-
-       <div class='graph mt-3 hidden', id="weight-graph2">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-10 col-sm-11 mx-auto">
+      <h4 class="text-center">推移のグラフ</h4>
+  
+      <h5 class="text-center mt-5">体重の推移</h5>
+  
+      <div class="mt-3">
+        <div class="text-right">
+          <!-- onclickなどのイベントはHTMLに書くのが一般的 -->
+          <div class="btn btn-outline-info btn-sm" onclick="btn1();">一週間の推移</div>
+          <div class="btn btn-outline-info btn-sm" onclick="btn2();">一ヶ月の推移</div>
+        </div>
+  
+        <div class="graph mt-3 active", id="weight-graph1">
+          <h6 class="text-center">一週間の推移</h6>
+          <%= line_chart @weekly_weight, download: true, curve: false, series: false, min: 30, colors: ['#0099FF'] %>
+        </div>
+  
+        <div class='graph mt-3 hidden', id="weight-graph2">
           <h6 class="text-center">一ヶ月の推移</h6>
           <%= line_chart @monthly_weight, download: true, curve: false, series: false, min: 30, colors: ['#808080'] %>
+        </div>
+      </div>
+  
+      <h5 class="text-center mt-5">体温の推移</h5>
+      <div class="mt-3">
+        <div class="text-right">
+          <div class="btn btn-outline-info btn-sm" onclick="btn3();">一週間の推移</div>
+          <div class="btn btn-outline-info btn-sm" onclick="btn4();">一ヶ月の推移</div>
+        </div>
+  
+        <div class='graph active mt-3' id="temperature-graph1">
+          <h6 class="text-center">一週間の推移</h6>
+          <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
+        </div>
+  
+        <div class='graph hidden' id="temperature-graph2">
+          <h6 class="text-center">一ヶ月の推移</h6>
+          <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#808080'] %>
+        </div>
+      </div>
+      
+      <h5 class="text-center mt-5">体温の推移</h5>
+
+      <div class="mt-3">
+        <div class="text-right">
+          <div class="btn btn-outline-info btn-sm" onclick="btn3();">一週間の推移</div>
+          <div class="btn btn-outline-secondary btn-sm" onclick="btn4();">一ヶ月の推移</div>
+        </div>
+
+        <div class='graph active mt-3' id="temperature-graph1">
+          <h6 class="text-center">一週間の推移</h6>
+          <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
+        </div>
+
+        <div class='graph hidden' id="temperature-graph2">
+          <h6 class="text-center">一ヶ月の推移</h6>
+          <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#808080'] %>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <%= link_to '記録一覧へ戻る', user_health_logs_path(current_user), class: "btn btn-info btn-sm" %>
       </div>
     </div>
-
-    <h5 class="text-center mt-5">体温の推移</h5>
-
-    <div class="mt-3">
-      <div class="text-right">
-        <div class="btn btn-outline-info btn-sm" onclick="btn3();">一週間の推移</div>
-        <div class="btn btn-outline-secondary btn-sm" onclick="btn4();">一ヶ月の推移</div>
-      </div>
-
-      <div class='graph active' id="temperature-graph1">
-        <h6 class="text-center">一週間の推移</h6>
-        <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#0099FF'] %>
-      </div>
-
-      <div class='graph hidden' id="temperature-graph2">
-        <h6 class="text-center">一ヶ月の推移</h6>
-        <%= line_chart @monthly_temperature, download: true, curve: false, series: false, min: 30, max: 40, colors: ['#808080'] %>
-      </div>
-    </div>
-
-    <div class="text-center mt-5">
-      <%= link_to '記録一覧へ戻る', user_health_logs_path(current_user), class: "btn btn-info btn-sm" %>
-    </div>
-
   </div>
 </div>

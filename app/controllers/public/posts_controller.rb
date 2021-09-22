@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -20,10 +21,10 @@ class Public::PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
 
     # フォローしているユーザーのidを取得
-    #folllowing_users = current_user.followings.pluck(:id)
+    # folllowing_users = current_user.followings.pluck(:id)
     # 自身のidを一覧に追加する
-    #folllowing_users.push(current_user.id)
-    #@posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
+    # folllowing_users.push(current_user.id)
+    # @posts = Post.where(user_id: folllowing_users).order(created_at: :desc)
   end
 
   def show
@@ -52,15 +53,20 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    #viewのformで受け取ったパラメータをモデルに渡す
+    # viewのformで受け取ったパラメータをモデルに渡す
     @posts = Post.search(params[:search]).order(created_at: :desc)
   end
 
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
+  end
 
   private
 
   def post_params
     params.require(:post).permit(:body)
   end
-
 end

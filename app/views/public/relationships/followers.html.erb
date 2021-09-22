@@ -1,25 +1,28 @@
-<div class="row">
-  <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
-    <div class="text-center">
-      <h4>すべてのフォロワー</h4>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
+      <div class="text-center">
+        <h4>すべてのフォロワー</h4>
+      </div>
+  
+      <div class="mt-4">
+        <table class="table">
+          <% @users.each do |user| %>
+            <tbody>
+              <tr>
+                <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %></td>
+                <td>
+                  <%= link_to user.name, user_path(user), class: "text-secondary" %><br>
+                  <p class="text-secondary"><%= user.introduction %></p>
+                </td>
+                <td><%= render 'public/relationships/follow', user: user %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+  
     </div>
-
-    <div class="mt-4">
-      <table class="table">
-        <% @users.each do |user| %>
-          <tbody>
-            <tr>
-              <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %></td>
-              <td>
-                <%= link_to user.name, user_path(user), class: "text-secondary" %><br>
-                <p class="text-secondary"><%= user.introduction %></p>
-              </td>
-              <td><%= render 'public/relationships/follow', user: user %></td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
-
   </div>
-</div>
+  </div>
+  

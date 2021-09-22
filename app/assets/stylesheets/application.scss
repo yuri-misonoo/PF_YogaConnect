@@ -23,6 +23,7 @@
  @import 'font-awesome';
 
 
+
 .list{
  font-size: 12px;
 }
@@ -36,15 +37,18 @@
 
   .logo{
   margin: 0 auto;
+  zoom: 0.5;
   }
   .header{
-  position: relative;
+   position: relative;
    button{
-   position: absolute;
-   top: 10%;
-  }
+    position: absolute;
+    top: 10%;
+    }
   }
 }
+
+
 
 $main-color: #d0b0ff;
 
@@ -65,7 +69,7 @@ body{
 
 /* pタグの文字サイズ */
 p{
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* マイページのメニュー */
@@ -152,4 +156,13 @@ p{
 /* カレンダーのboxを表示 */
 .box{
   display: block;
+}
+
+.main-img {
+  width: 100%;
+  height: 600px;
+  margin: 0 auto;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
 }

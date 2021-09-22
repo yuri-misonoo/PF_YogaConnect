@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
-  
+
   has_many :inquirues, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }, obscenity: { sanitize: true }
@@ -41,16 +41,16 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  #自分からの通知(active_notifications)を明示的にクラス名とIDを指定して紐付ける
+  # 自分からの通知(active_notifications)を明示的にクラス名とIDを指定して紐付ける
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  #相手からの通知(passive_notifications)を明示的にクラス名とIDを指定して紐付ける
+  # 相手からの通知(passive_notifications)を明示的にクラス名とIDを指定して紐付ける
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  #フォローの通知
+  # フォローの通知
   def create_notification_follow!(current_user)
-    #フォローボタンを連打されても、通知が一回しかいかないようにレコードを取得し、既にフォローされているか検索
+    # フォローボタンを連打されても、通知が一回しかいかないようにレコードを取得し、既にフォローされているか検索
     tmp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, 'follow'])
-    #フォローされた場合の通知レコードを作成
+    # フォローされた場合の通知レコードを作成
     if tmp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -62,16 +62,14 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-    User.where(['name LIKE ?', "%#{search}%"])
+      User.where(['name LIKE ?', "%#{search}%"])
     else
       User.all
     end
   end
 
-  #ログイン時に退会済みのユーザーをはじく
+  # ログイン時に退会済みのユーザーをはじく
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
-
 end
-
