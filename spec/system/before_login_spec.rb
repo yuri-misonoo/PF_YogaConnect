@@ -117,7 +117,7 @@ describe 'サインイン前のテスト' do
         expect(page).to have_field 'user[password]'
       end
     end
-    
+
     it 'ログインボタンが表示される' do
       expect(page).to have_button 'ログイン'
     end

@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe '記録のテスト' do
-
   let(:user) { create(:user) }
   let(:health_log) { create(:health_log, weight: '50', temperature: '36', exercise: 'ヨガ', morning: 'ご飯', lunch: 'ラーメン', dinner: 'カレー', memo: 'がんばった', user: user) }
 
@@ -21,7 +20,7 @@ describe '記録のテスト' do
 
     context '表示の確認' do
       it 'URLの確認' do
-        expect(current_path).to eq ( '/users/' + user.id.to_s + '/health_logs/new' )
+        expect(current_path).to eq('/users/' + user.id.to_s + '/health_logs/new')
       end
 
       it '体重のフォームが表示される' do
@@ -82,6 +81,4 @@ describe '記録のテスト' do
       end
     end
   end
-
-  
 end

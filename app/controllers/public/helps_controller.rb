@@ -9,5 +9,4 @@ class Public::HelpsController < ApplicationController
 
   def log_method
   end
-
 end

@@ -13,7 +13,7 @@
 
       </div>
 
-      <%= post.body %><br>
+      <%= link_to post.body, post_path(post), class: 'text-secondary' %><br>
 
      <div class="mt-3 mb-3 d-flex">
         <div class="mr-4", id="favorite_btn_<%= post.id %>">
@@ -28,14 +28,11 @@
 
       </div>
 
-
-
       <% if post.user.id == current_user.id %>
         <div class="text-right mb-3">
           <%= link_to '編集', edit_post_path(post.id), class: "btn btn-info btn-sm" %>
           <%= link_to '削除', post_path(post), method: :delete, "data-confirm" =>"本当に削除しますか？", class: " btn btn-secondary btn-sm" %>
         </div>
-
       <% end %>
     </div>
   <% end %>

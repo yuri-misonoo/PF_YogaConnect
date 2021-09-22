@@ -1,27 +1,27 @@
 class Public::ChatsController < ApplicationController
-  #相互フォローしてる人同士のみ
+  # 相互フォローしてる人同士のみ
   before_action :follow_each_other, only: [:show]
 
   def show
-    #どのユーザーとチャットするかを取得
+    # どのユーザーとチャットするかを取得
     @user = User.find(params[:id])
-    #current_userのuser_roomにあるroom_idの値を格納
+    # current_userのuser_roomにあるroom_idの値を格納
     rooms = current_user.user_rooms.pluck(:room_id)
-    #user_idがチャット相手のidに一致するものと、room_idがroomsのどれかに一致するレコードを格納
+    # user_idがチャット相手のidに一致するものと、room_idがroomsのどれかに一致するレコードを格納
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
-    #もしuser_roomが空でないなら
-    unless user_rooms.nil?
-      #user_roomsのroomを格納
-      @room = user_rooms.room
-
-    #それ以外なら、新しく作る
-    else
+    # もしuser_roomが空でないなら
+    if user_rooms.nil?
       @room = Room.new
       @room.save
-      #user_roomをカレントユーザーとチャット相手で分ける
+      # user_roomをカレントユーザーとチャット相手で分ける
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
+    else
+      # user_roomsのroomを格納
+      @room = user_rooms.room
+
+      # それ以外なら、新しく作る
     end
 
     @chats = @room.chats
@@ -45,5 +45,4 @@ class Public::ChatsController < ApplicationController
       redirect_to posts_path
     end
   end
-
 end

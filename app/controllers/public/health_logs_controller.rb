@@ -1,5 +1,6 @@
 class Public::HealthLogsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :ensure_correct_user
 
   def new
     @user = User.find(params[:user_id])
@@ -17,7 +18,7 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def index
-    #current_userのidに一致している全レコードを取得
+    # current_userのidに一致している全レコードを取得
     @health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -38,29 +39,28 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def graph
-    #今日から７日前をfromに格納　.weekをつけないとだめ
+    # 今日から７日前をfromに格納　.weekをつけないとだめ
     from  = Time.current.at_beginning_of_day - 1.week
-    #今日をtoに格納
+    # 今日をtoに格納
     to    = Time.current.at_end_of_day
-    #pluckは指定されたものだけの配列を作る
+    # pluckは指定されたものだけの配列を作る
     @weekly_weight = HealthLog.where(user_id: current_user.id, created_at: from...to).pluck(:health_log_on, :weight)
 
-    #今日から一ヶ月前を格納
+    # 今日から一ヶ月前を格納
     from2 = Time.current.at_beginning_of_day - 1.month
-    #今日を格納
+    # 今日を格納
     to2 = Time.current.at_end_of_day
     @monthly_weight = HealthLog.where(user_id: current_user.id, created_at: from2...to2).pluck(:health_log_on, :weight)
 
-    #一週間の体温
+    # 一週間の体温
     from3 = Time.current.at_beginning_of_day - 1.week
     to3 = Time.current.at_end_of_day
     @weekly_temperature = HealthLog.where(user_id: current_user.id, created_at: from3...to3).pluck(:health_log_on, :temperature)
 
-    #一ヶ月の体温
+    # 一ヶ月の体温
     from4 = Time.current.at_beginning_of_day - 1.month
     to4 = Time.current.at_end_of_day
     @monthly_temperature = HealthLog.where(user_id: current_user.id, created_at: from4...to4).pluck(:health_log_on, :temperature)
-
   end
 
   def memo
@@ -72,9 +72,9 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def search
-    #viewのformで受け取ったパラメータをモデルに渡す
+    # viewのformで受け取ったパラメータをモデルに渡す
     @health_logs = HealthLog.search(current_user, params[:search]).page(params[:page]).per(10)
-    #@health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
+    # @health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private
@@ -83,4 +83,16 @@ class Public::HealthLogsController < ApplicationController
     params.require(:health_log).permit(:weight, :temperature, :feeling, :is_active, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on, :start_time)
   end
 
+  # def ensure_correct_user
+  #   @health_log = HealthLog.find(params[:id])
+  #   # @health_logs = HealthLog.where(user_id: current_user.id)
+
+  #   unless @health_log.user == current_user
+  #     redirect_to user_health_logs_path(current_user)
+  #   end
+
+    # unless @health_logs.user == current_user
+    #   redirect_to user_health_logs_path(current_user)
+    # end
+  # end
 end

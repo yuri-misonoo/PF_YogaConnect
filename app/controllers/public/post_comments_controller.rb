@@ -6,7 +6,7 @@ class Public::PostCommentsController < ApplicationController
     @post_comment = current_user.post_comments.new(post_comment_params)
     @post_comment.post_id = @post.id
     @post_comment.save
-    #コメントをしたタイミングで通知レコードを作成
+    # コメントをしたタイミングで通知レコードを作成
     @post.create_notification_comment!(current_user, @post_comment.id)
   end
 
@@ -21,5 +21,4 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:body)
   end
-
 end

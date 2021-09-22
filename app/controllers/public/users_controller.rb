@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id).order(created_at: :desc)
-    #その日の今日の記録を取得。Time.current.at_beginning_of_day..Time.current.at_end_of_dayで一日（範囲）を
+    # その日の今日の記録を取得。Time.current.at_beginning_of_day..Time.current.at_end_of_dayで一日（範囲）を
     @today_health_log = HealthLog.find_by(user_id: current_user.id, created_at: Time.current.at_beginning_of_day..Time.current.at_end_of_day)
   end
 
@@ -35,9 +35,9 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:id])
-    #is_deletedカラムをfalseにする
+    # is_deletedカラムをfalseにする
     @user.update(is_deleted: true)
-    #ログアウトさせる
+    # ログアウトさせる
     reset_session
     redirect_to root_path
   end
@@ -47,5 +47,4 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:profile_image, :goal_weight, :goal, :introduction, :name, :link)
   end
-
 end
