@@ -19,9 +19,11 @@ class Public::InquiriesController < ApplicationController
   def thanks
     # メール送信
     @inquiry = Inquiry.new(inquiry_params)
-    InquiryMailer.received_email(@inquiry).deliver
-    # 完了画面を表示
-    render :action => 'thanks'
+    if @inquiry.save
+      InquiryMailer.received_email(@inquiry).deliver
+      # 完了画面を表示
+      render :action => 'thanks'
+    end
   end
 
   private

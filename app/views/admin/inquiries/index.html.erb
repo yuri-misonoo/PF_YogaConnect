@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+    <h4 class="text-center">お問い合わせ一覧</h4>
+
+    <table class="table mt-4 text-secondary">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>ユーザー名</td>
+          <td>メールアドレス</td>
+          <td>タイトル</td>
+          <td></td>
+        </tr>
+      </thead>
+      <% @inquiries.each do |inquiry| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= inquiry.user.id %>
+            </td>
+            <td>
+              <%= inquiry.name %>
+            </td>
+            <td>
+              <%= inquiry.email %>
+            </td>
+            <td>
+              <%= inquiry.title %>
+            </td>
+            <td>
+              <%= link_to '詳細', admin_inquiry_path(inquiry), class: 'btn btn-info btn-sm' %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+
+  </div>
+</div>

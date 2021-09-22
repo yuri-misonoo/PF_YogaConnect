@@ -2,7 +2,7 @@
   <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
     <h4 class="text-center">投稿一覧</h4>
 
-    <div class="search-form mt-5">
+    <div class="search-form mt-5 text-center">
       <%= form_with url: admin_posts_path, method: :get, local: true do |f| %>
         <%= f.text_field :search %>
         <%= f.submit '検索' %>
