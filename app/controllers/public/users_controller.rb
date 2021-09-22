@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :unsubscribe, :withdraw]
 
   def new
     @user = User.find(params[:id])
@@ -40,6 +41,13 @@ class Public::UsersController < ApplicationController
     # ログアウトさせる
     reset_session
     redirect_to root_path
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   private

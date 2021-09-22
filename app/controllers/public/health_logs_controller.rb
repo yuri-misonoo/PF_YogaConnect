@@ -1,6 +1,6 @@
 class Public::HealthLogsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :ensure_correct_user
+  before_action :ensure_correct_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.find(params[:user_id])
@@ -83,16 +83,10 @@ class Public::HealthLogsController < ApplicationController
     params.require(:health_log).permit(:weight, :temperature, :feeling, :is_active, :memo, :exercise, :morning, :lunch, :dinner, :health_log_on, :start_time)
   end
 
-  # def ensure_correct_user
-  #   @health_log = HealthLog.find(params[:id])
-  #   # @health_logs = HealthLog.where(user_id: current_user.id)
-
-  #   unless @health_log.user == current_user
-  #     redirect_to user_health_logs_path(current_user)
-  #   end
-
-    # unless @health_logs.user == current_user
-    #   redirect_to user_health_logs_path(current_user)
-    # end
-  # end
+  def ensure_correct_user
+    @health_log = HealthLog.find(params[:id])
+    unless @health_log.user == current_user
+      redirect_to user_health_logs_path(current_user)
+    end
+  end
 end
