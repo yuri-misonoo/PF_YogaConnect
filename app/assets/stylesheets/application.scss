@@ -128,12 +128,6 @@ p{
    text-align: center;
   }
 
-  .today {}
-  .past {}
-  .future {}
-
-  .start-date {}
-
   .prev-month {
    color: $sub-color;
    background-color: white;
@@ -142,9 +136,6 @@ p{
    color: $sub-color;
    background-color: white;
   }
-  .current-month {}
-
-  .has-events {}
 }
 
 /* 通知の未確認時のマークの設定 */
