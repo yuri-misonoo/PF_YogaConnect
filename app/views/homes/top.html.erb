@@ -2,60 +2,54 @@
   <%= image_tag 'morning_yoga.png', class: "main-img" %>
 </div>
 
-<div class="row mx-auto">
-  <div class="col mx-auto">
-    <h4 class="text-center mt-5">心も体もヨガで癒やそう</h4>
+<div class="container">
+  <div class="row mx-auto">
+    <div class="col mx-auto">
+      <h4 class="text-center mt-5">心も体もヨガで癒やそう</h4>
 
-    <div class="text-center mt-3">
-      <h5>ヨガとは</h5>
-      <p>
-        「ヨガ」とはサンスクリット語で「つながり」を意味しています。<br>
-        心と体、魂がつながっている状態のことを表し、呼吸、姿勢、瞑想を組み合わせて<br>
-        心身の緊張をほぐし、心の安定とやすらぎを得るものです。<br>
-        具体的には「調和」「統一」「バランス」を意味し、体・心・呼吸・食べ物など、<br>
-        あらゆるカテゴリーと関係しています。
-      </p>
+      <div class="text-center mt-3">
+        <h5>ヨガとは</h5>
+        <p>
+          「ヨガ」とはサンスクリット語で「つながり」を意味しています。<br>
+          心と体、魂がつながっている状態のことを表し、呼吸、姿勢、瞑想を組み合わせて<br>
+          心身の緊張をほぐし、心の安定とやすらぎを得るものです。<br>
+          具体的には「調和」「統一」「バランス」を意味し、体・心・呼吸・食べ物など、<br>
+          あらゆるカテゴリーと関係しています。
+        </p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col mx-auto">
-    <table class="mx-auto">
-      <tbody>
-        <h5 class="text-center mt-5">こんな人におすすめ</h5>
-        <tr>
-          <td style="width:50%">
-            <p>忙しくてストレスフルな人</p>
-            <p>自分を見つめ直す時間がほしい人</p>
-            <p>リラックスしたい人</p>
-            <p>寝付きの悪い人</p>
-            <p>冷えやだるさ、肩こり、むくみを解消したい人</p>
-            <p>キレイな体作りがしたい人</p>
-          </td>
-          <td style="width:50%">
-            <%= image_tag 'sunset_yoga.png', :size => '250x150' %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <h5 class="text-center mt-4">こんな人におすすめ</h5>
+  <div class="row">
+    <div class="col-sm text-center">
+      <p>・忙しくてストレスフルな人</p>
+      <p>・自分を見つめ直す時間がほしい人</p>
+      <p>・リラックスしたい人</p>
+      <p>・寝付きの悪い人</p>
+      <p>・冷えやだるさ、肩こり、むくみを解消したい人</p>
+      <p>・キレイな体作りがしたい人</p>
+    </div>
+
+    <div class="col-sm mt-2 text-center">
+      <%= image_tag 'sunset_yoga.png', :size => '250x150', class: 'ml-2' %>
+    </div>
   </div>
-</div>
 
-<div class="row mt-5">
-  <div class="col mx-auto">
-    <h6 class="text-center">
-      <strong>ヨガは実践してすぐに効果がでるものではありません！<br>
-              長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！</strong>
-    </h6>
+  <div class="row mt-5">
+    <div class="col mx-auto">
+      <h6 class="text-center">
+        <strong>ヨガは実践してすぐに効果がでるものではありません！<br>
+                長期間続けるためにも、仲間達とともに楽しくヨガを実践していきましょう！</strong>
+      </h6>
 
-    <div class="mt-4 text-center">
-      <% if user_signed_in? %>
-        <span></span>
-      <% else %>
-        <strong>さっそく始める！ <i class="fas fa-hand-point-right"></i> <%= link_to 'サインアップ', new_user_registration_path %></strong>
-
-      <% end %>
+      <div class="mt-4 text-center">
+        <% if user_signed_in? %>
+          <span></span>
+        <% else %>
+          <strong>さっそく始める！ <i class="fas fa-hand-point-right"></i> <%= link_to 'サインアップ', new_user_registration_path %></strong>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

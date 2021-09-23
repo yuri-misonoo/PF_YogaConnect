@@ -16,8 +16,8 @@
         <span><%= link_to 'いいねしました', post_path(notification.post), class: "text-secondary" %></span>
 
       <% when 'post_comment' then %>
-        <% if notification.post.user_id == visited.id %>
-          <% link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %>
+        <% if notification.post.user_id == notification.visited.id %>
+          <%= link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %>
         <% else %>
           <%= link_to user_path(visitor) do %>
             <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>

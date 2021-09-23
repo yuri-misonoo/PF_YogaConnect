@@ -1,24 +1,41 @@
-# README
+# Yoga Connect
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+ヨガを利用した体調管理アプリで、ヨガ仲間とコミュニケーションを取ることができます。コロナが流行し、コロナ鬱という言葉をよく耳にするようになりましたが、それだけでなく思うように生活ができずにストレスが溜まっている人は多くいます。ヨガは心身ともにリラックスすることができ、運動にもなるため体調管理にとても最適です。youtube やテレビなどでも多くの動画があり手軽に始められるため、少しでも実践して体調を記録し他の人と情報交換をすることで楽しみながらヨガの実践、体調管理を行うことができるようになっています。わざわざ体調管理アプリを開いて記録するのは面倒くさいという方でも SNS を見るついでに記録するという感覚で体調管理ができるようになっています。
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+ヨガ仲間とのつながり、自身の心と体のつながりを実感し落ち着いた毎日を過ごす。
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+自分と同じ悩みや気持ちを持っている人とつながり、離れていても一緒にヨガを楽しんでいるという感覚を持って自身も楽しんでほしいため。  
+ヨガを通じて自らと対話しリラックスすることで落ち着いた時間を過ごしてほしいため。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+・最近ストレスが溜まっている人  
+・よくいらいらする人  
+・体重が増加した、ダイエットしたい人  
+・落ち着く時間がなくリラックスしたい人  
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+朝、会社や学校に行く前と一日の終わりに記録する
 
-* ...
+## 設計書
+
+<...>
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/1T9_Z0j56eU9OYtORK9AptA13AUs9SaOL6JvRteuRm_o/edit?usp=sharing
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
