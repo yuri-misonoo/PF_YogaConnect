@@ -14,7 +14,7 @@
         <% @post_comments.each do |post_comment| %>
           <div class="border-bottom pt-3">
             <%= link_to user_path(post_comment.user), class: "text-secondary" do %>
-              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "rounded-pill" %>
               <%= post_comment.user.name %>
             <% end %>
             <%= post_comment.comment_time %><br>

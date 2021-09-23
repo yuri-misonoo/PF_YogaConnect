@@ -4,13 +4,13 @@
       <div class="text-center">
         <h4>すべてのフォロワー</h4>
       </div>
-  
+
       <div class="mt-4">
         <table class="table">
           <% @users.each do |user| %>
             <tbody>
               <tr>
-                <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %></td>
+                <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size: "60x60", class: "rounded-pill" %></td>
                 <td>
                   <%= link_to user.name, user_path(user), class: "text-secondary" %><br>
                   <p class="text-secondary"><%= user.introduction %></p>
@@ -21,8 +21,7 @@
           <% end %>
         </table>
       </div>
-  
+
     </div>
   </div>
   </div>
-  

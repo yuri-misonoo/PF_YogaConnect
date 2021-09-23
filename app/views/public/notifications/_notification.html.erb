@@ -4,7 +4,7 @@
 
   <div class="p-1 border-bottom">
     <%= link_to user_path(visitor) do %>
-      <%= attachment_image_tag visitor, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+      <%= attachment_image_tag visitor, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg", size: "20x20", class: "rounded-pill" %>
     <% end %>
     <%= visitor.name %>さんが
 
