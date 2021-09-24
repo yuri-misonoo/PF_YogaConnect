@@ -8,7 +8,7 @@
           <% if chat.user_id != current_user.id %>
             <div class="text-left">
               <%= link_to user_path(@user) do %>
-                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class: "rounded-pill" %>
               <% end %>
               <%= chat.message %><br>
               <p><%= @user.name %></p>
@@ -17,7 +17,7 @@
           <% else %>
             <div class="text-right">
               <%= chat.message %>
-              <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
+              <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class: "rounded-pill" %><br>
               <p><%= current_user.name %></p>
             </div>
           <% end %>

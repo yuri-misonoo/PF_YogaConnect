@@ -3,7 +3,7 @@
     <div class="border-bottom pt-3">
       <div class="d-flex">
         <%= link_to user_path(post.user), class: 'text-secondary' do %>
-          <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
+          <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: "50x50", class: "rounded-pill" %>
         <% end %>
         <strong class="ml-2"><%= post.user.name %></strong><br>
 

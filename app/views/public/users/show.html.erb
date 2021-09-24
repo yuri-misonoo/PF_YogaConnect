@@ -8,7 +8,7 @@
   
       <div class="d-flex">
         <div>
-          <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %><br>
+          <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg", size: "80x80", class: "rounded-pill" %><br>
           <strong><%= @user.name %></strong>
         </div>
   

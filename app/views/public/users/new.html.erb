@@ -10,7 +10,7 @@
   
           <div class="form-group">
             <label for="inputImage">【プロフィール画像】</label><br>
-            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "rounded-pill" %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size: "60x60", class: "rounded-pill" %>
   
             <%= f.attachment_field :profile_image, placeholder: "ファイルを選択" %>
           </div>
