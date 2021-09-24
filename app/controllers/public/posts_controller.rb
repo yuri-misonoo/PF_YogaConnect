@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: '投稿に成功しました'
     else
-      flash.now[:alert] = '投稿は10文字以上入力してください'
+      flash.now[:alert] = '投稿は5文字以上入力してください'
       render :new
     end
   end
