@@ -1,6 +1,9 @@
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row">
     <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+      <%= link_to helps_path(current_user), class: 'text-secondary' do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
       <h5 class="text-center">お問い合わせ</h5>
       <div>
         <!-- すぐに保存するのではなく、確認画面がある場合はインスタンスではなくモデル名で書く -->
@@ -9,23 +12,23 @@
             <%= f.label :title, 'タイトル', class: "form-label" %>
             <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "記録について" %>
           </div>
-  
+
           <div class="form-group">
             <%= f.label :message, 'お問い合わせ内容', class: 'form-label' %>
             <%= f.text_area :message, rows: 5, class: 'form-control', placeholder: "グラフがうまく表示されない" %>
           </div>
-  
+
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :name, :value => current_user.name %>
           <%= f.hidden_field :email, :value => current_user.email %>
-  
+
           <div class="action text-center">
             <%= f.submit '確認画面へ', class: 'btn btn-info btn-sm' %>
           </div>
-  
+
         <% end %>
       </div>
-  
+
     </div>
   </div>
 </div>

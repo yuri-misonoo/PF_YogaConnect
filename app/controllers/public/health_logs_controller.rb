@@ -64,7 +64,7 @@ class Public::HealthLogsController < ApplicationController
   end
 
   def memo
-    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(10)
+    @health_logs = HealthLog.where(user_id: current_user.id).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def calendar
