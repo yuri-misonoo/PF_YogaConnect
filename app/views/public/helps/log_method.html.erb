@@ -1,14 +1,17 @@
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row">
     <div class="col-lg-6 col-md-9 col-sm-12 mx-auto">
+      <%= link_to helps_path(current_user), class: 'text-secondary' do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
       <h5 class="text-center">記録の利用について</h5>
-  
+
       <div class="mt-4">
         <strong><i class="fas fa-circle"></i> 毎日の記録について</strong><br>
         <span>
           画面上部にある<strong class="text-info">マイページ</strong>を押す　→　四角の中にある<strong class="text-info">毎日の記録</strong>を押す
           →　記録したいものを記録する（※）→　<strong>記録</strong>ボタンを押す
-  
+
         </span>
         <p class="mt-3">
           ※全て記入する必要はございませんが【体調】と【今日のヨガ実践】のラジオボタンの記入は<br>
@@ -16,7 +19,7 @@
           実践して気持ちが良かったヨガ動画のURLなど好きに記入しましょう！
         </p>
       </div>
-  
+
       <div class="mt-4">
         <strong><i class="fas fa-circle"></i> 体重と体温のグラフについて</strong><br>
         <span>
@@ -25,7 +28,7 @@
           →　一週間分の推移が表示される　→　<strong class="text-info">一ヶ月の推移</strong>ボタンをおす　→　一ヶ月の推移が表示される
         </span>
       </div>
-  
+
       <div class="mt-4">
         <strong><i class="fas fa-circle"></i>今日のメモ一覧について</strong><br>
         <span>
@@ -33,7 +36,7 @@
           →　<strong class="text-info">今日のメモ一覧</strong>ボタンを押す
         </span>
       </div>
-  
+
       <div class="mt-4">
         <strong><i class="fas fa-circle"></i>記録の検索について</strong><br>
         <span>
@@ -42,7 +45,7 @@
           →　検索フォームに日付を入力する（7月→×　07→○　0707→×　07-07→○）→　<strong class="text-info">検索</strong>ボタンを押す
         </span>
       </div>
-  
+
       <div class="mt-4">
         <strong><i class="fas fa-circle"></i>ヨガ実践カレンダーについて</strong><br>
         <span>
@@ -51,8 +54,8 @@
           →　その日に実践したヨガの内容がカレンダー下に表示される
         </span>
       </div>
-  
-  
+
+
     </div>
   </div>
 </div>

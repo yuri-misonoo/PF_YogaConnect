@@ -44,7 +44,6 @@ describe 'userコントローラのテスト' do
 
     context '登録成功のテスト' do
       before do
-        # fill_in 'user[profile_image]', with: user.profile_image
         fill_in 'user[introduction]', with: user.introduction
         fill_in 'user[goal_weight]', with: user.goal_weight
         fill_in 'user[goal]', with: user.goal
@@ -76,15 +75,35 @@ describe 'userコントローラのテスト' do
       end
 
       it 'ヨガ実践カレンダーのリンクが表示される' do
-        expect(page).to have_link 'ヨガ実践カレンダー', href: user_health_logs_calender_path(user)
+        expect(page).to have_link 'ヨガ実践カレンダー', href: user_health_logs_calendar_path(user)
       end
 
       it '編集画面へのリンクが表示される' do
-        expect(page).to have_link '編集', href: edit_user_path(user)
+        expect(page).to have_link '', href: edit_user_path(user)
       end
 
-      it '退会のリンクが表示される' do
-        expect(page).to have_link '退会', href: user_path(user)
+      it '通知のリンクが表示される' do
+        expect(page).to have_link '', href: user_notifications_path(user)
+      end
+
+      it 'いいねした投稿の一覧が表示される' do
+        expect(page).to have_link 'いいねした投稿', href: users_favorite_path(user)
+      end
+
+      it 'フォロワー一覧のリンクが表示される' do
+        expect(page).to have_link '', href: followers_user_relationships_path(user)
+      end
+
+      it 'フォロー中一覧のリンクが表示される' do
+        expect(page).to have_link '', href: followings_user_relationships_path(user)
+      end
+
+      it 'フォロワーの人数が表示される' do
+        expect(page).to have_content user.followers.count
+      end
+
+      it 'フォロー中の人数が表示される' do
+        expect(page).to have_content user.followings.count
       end
 
       it '自分の名前が表示される' do
@@ -93,6 +112,10 @@ describe 'userコントローラのテスト' do
 
       it '自分の紹介文が表示される' do
         expect(page).to have_content user.introduction
+      end
+
+      it 'ツイッターやインスタのリンクが表示される' do
+        expect(page).to have_content user.goal
       end
 
       it '自分の投稿数が表示される' do
@@ -135,5 +158,19 @@ describe 'userコントローラのテスト' do
         expect(page).to have_field 'user[goal]', with: user.goal
       end
     end
+
+    context '編集成功のテスト' do
+      before do
+        fill_in 'user[introduction]', with: user.introduction
+        fill_in 'user[goal_weight]', with: user.goal_weight
+        fill_in 'user[goal]', with: user.goal
+        click_button '更新'
+      end
+
+      it '更新後のリダイレクト先が、マイページになっている' do
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+    end
+
   end
 end

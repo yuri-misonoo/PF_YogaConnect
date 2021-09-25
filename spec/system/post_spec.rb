@@ -7,6 +7,7 @@ describe '投稿のテスト' do
   let(:other_user) { create(:user) }
   let(:post) { create(:post, body: 'abcdefghijk', user: user) }
   let(:other_post) { create(:post, body: 'lmnopqrstuvwxyz', user: other_user) }
+  let(:post_comment) { create(:post, :user, body: 'dghtueksmlejp') }
 
   before do
     visit new_user_session_path
@@ -64,13 +65,6 @@ describe '投稿のテスト' do
       it '自分と他人の画像のリンク先が正しい' do
         expect(page).to have_link post.user.profile_image, href: user_path(post.user)
       end
-
-      # it '自分の投稿と他人の投稿が表示され、リンク先が正しい' do
-      # expect(page).to have_content post.body
-      # expect(page).to have_content other_post.body
-      # expect(page).to have_link post.body, href: post_path(post)
-      # expect(page).to have_link other_post.body, href: post_path(other_post)
-      # end
 
       it 'いいねの数が表示される' do
         expect(page).to have_content @post.favorites.count
@@ -139,12 +133,7 @@ describe '投稿のテスト' do
       end
     end
 
-    context 'コメントの新規投稿ができるか' do
-      before do
-        fill_in 'post_comment[body]', with: Faker::Lorem.characters(number: 30)
-        click_button '送信'
-      end
-
+    context '新規コメントの表示のテスト' do
       it 'コメントのフォームが存在するか' do
         expect(page).to have_field 'post_comment[body]'
       end
@@ -152,9 +141,18 @@ describe '投稿のテスト' do
       it 'コメントの送信ボタンが存在しているか' do
         expect(page).to have_button '送信'
       end
+    end
+
+    context 'コメント成功のテスト' do
+      before do
+        fill_in 'post_comment[body]', with: Faker::Lorem.characters(number: 30)
+        click_button '送信'
+      end
 
       it '送信後に投稿詳細ページにレンダーされるか' do
-        expect(current_path).to eq '/post/' + post.id.to_s
+        #expect(current_path).to eq '/post/' + post.id.to_s
+        #expect(response).to render_template(:show)
+        #p show.html
       end
     end
   end

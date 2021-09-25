@@ -29,6 +29,11 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(@user), notice: 'ユーザー情報を編集しました'
     end
   end
+  
+  def favorite
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
 
   def unsubscribe
     @user = current_user

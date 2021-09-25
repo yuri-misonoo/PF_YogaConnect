@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     get 'users/search' => 'users#search', as: 'user_search'
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
+    get 'users/:id/favorite' => 'users#favorite', as: 'users_favorite'
     resources :users, only: [:show, :edit, :update] do
+      
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calendar' => 'health_logs#calendar'
