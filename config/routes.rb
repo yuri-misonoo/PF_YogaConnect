@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
     get 'users/:id/favorite' => 'users#favorite', as: 'users_favorite'
     resources :users, only: [:show, :edit, :update] do
-      
+
       get 'health_logs/memo' => 'health_logs#memo'
       get 'health_logs/graph' => 'health_logs#graph'
       get 'health_logs/calendar' => 'health_logs#calendar'
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
 
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:index, :show, :create]
 
     get 'helps/post_method' => 'helps#post_method'
     get 'helps/log_method' => 'helps#log_method'
