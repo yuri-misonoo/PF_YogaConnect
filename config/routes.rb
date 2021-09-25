@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/:id/new' => 'users#new', as: 'new_user'
     patch 'users/:id/new' => 'users#create', as: 'user_update'
-    get 'users/search' => 'users#search', as: 'user_search'
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'users_unsubscribe'
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'users_withdraw'
     get 'users/:id/favorite' => 'users#favorite', as: 'users_favorite'

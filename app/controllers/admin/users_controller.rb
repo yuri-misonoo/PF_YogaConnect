@@ -10,9 +10,14 @@ class Admin::UsersController < ApplicationController
     # @new_users = days.map { |user| User.where(:created_at => user.beginning_of_day..user.end_of_day).count }
     # mapでそれぞれの日にちに登録されたユーザー数をカウント
     # ここでも、active_supportのbeginning_of_dayとend_of_dayを利用
-    # from = Time.current.at_beginning_of_day - 1.month
+
+    # from = Time.current.at_beginning_of_day - 1.week
     # to = Time.current.at_end_of_day
-    @new_users = User.where(created_at: Time.current.at_beginning_of_day...Time.current.at_end_of_day).size
+    # @new_users = User.where(created_at: Time.current.at_beginning_of_day...Time.current.at_end_of_day).size
+
+    @users_count = User.group_by_day(:created_at).size
+    # ユーザー登録数グラフ出力　gem groupdateをインストールしないと上記の記述は使用不可
+    @user_today = User.where(created_at: Date.today.all_day).count
   end
 
   def show
