@@ -51,7 +51,7 @@
     <div>
       <label>日別ユーザー登録者数（総ユーザー数： <%= @users.count %>）</label>
       <div>
-        <%= line_chart @new_users, download: true, curve: false, series: false, min: 0, colors: ['#0099FF'] %>
+        <%= line_chart @users_count, download: true, curve: false, empty: "データがありません", series: false, min: 0, colors: ['#0099FF'] %>
       </div>
     </div>
 

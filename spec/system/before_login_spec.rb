@@ -49,7 +49,7 @@ describe 'サインイン前のテスト' do
       end
 
       it 'サインアップを押すと、サインアップ画面に遷移する' do
-        click_link 'サインアップ'
+        click_link 'サインアップ', match: :first
         expect(current_path).to eq('/users/sign_up')
       end
     end
@@ -154,7 +154,7 @@ describe 'サインイン前のテスト' do
 
     context '表示の確認' do
       it 'サイトの説明が表示されているか' do
-        expect(page).to have_content 'サイトの説明'
+        expect(page).to have_content 'サイトについて'
       end
 
       it '体調管理が表示されているか' do
@@ -162,7 +162,7 @@ describe 'サインイン前のテスト' do
       end
 
       it 'タイムラインの説明が表示されているか' do
-        expect(page).to have_content 'タイムライン'
+        expect(page).to have_content '仲間とコミュニケーションがとれる'
       end
     end
   end
@@ -178,16 +178,16 @@ describe 'サインイン前のテスト' do
     end
 
     context 'ヘッダーの表示を確認' do
-      it '今日の記録のリンクが表示される' do
-        expect(page).to have_link '今日の記録', href: new_user_health_log_path(user)
-      end
-
-      it '投稿一覧のリンクが表示される' do
-        expect(page).to have_link '投稿一覧', href: posts_path
+      it '投稿検索のリンクが表示される' do
+        expect(page).to have_link '', href: post_search_path
       end
 
       it '新規投稿のリンクが表示される' do
         expect(page).to have_link '投稿する', href: new_post_path
+      end
+
+      it '投稿一覧のリンクが表示される' do
+        expect(page).to have_link 'タイムライン', href: posts_path
       end
 
       it 'マイページのリンクが表示される' do
@@ -196,6 +196,10 @@ describe 'サインイン前のテスト' do
 
       it 'ログアウトのリンクが表示される' do
         expect(page).to have_link 'ログアウト', href: destroy_user_session_path
+      end
+
+      it 'ヘルプページのリンクが表示される' do
+        expect(page).to have_link 'ヘルプページ', href: helps_path
       end
     end
   end
