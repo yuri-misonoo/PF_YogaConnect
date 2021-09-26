@@ -10,8 +10,12 @@
       <table class="table text-secondary mt-4">
         <tbody>
           <tr>
-            <td style="width:30%">ユーザーID</td>
-            <td style="width:70%"><%= @inquiry.user_id %></td>
+            <td style="width:30%">お問い合わせ番号</td>
+            <td style="width:70%"><%= @inquiry.id %></td>
+          </tr>
+          <tr>
+            <td>ユーザーID</td>
+            <td><%= @inquiry.user_id %></td>
           </tr>
           <tr>
             <td>ユーザー名</td>
