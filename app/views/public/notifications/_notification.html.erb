@@ -25,6 +25,11 @@
           <% notification.post.user.name + 'さんの投稿' %>
         <% end %>
         <span>にコメントしました</span>
+
+      <% when 'chat' then %>
+        <%= link_to chat_path(notification.visitor_id), class: 'text-secondary' do %>
+          <%= visitor.name %>さんがあなたにDMを送りました
+        <% end %>
     <% end %>
 
     <p class="text-right"><%= time_ago_in_words(notification.created_at).upcase %>前</p>

@@ -5,6 +5,8 @@ class Notification < ApplicationRecord
   # 例）フォローの通知を送る時はpost_idとpost_cpmment_idの情報はいらないからnilを格納する
   belongs_to :post, optional: true
   belongs_to :post_comment, optional: true
+  belongs_to :room, optional: true
+  belongs_to :chat, optional: true
 
   belongs_to :visitor, class_name: 'User', optional: true
   belongs_to :visited, class_name: 'User', optional: true
