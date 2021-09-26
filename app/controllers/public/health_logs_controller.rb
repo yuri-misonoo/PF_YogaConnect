@@ -73,8 +73,13 @@ class Public::HealthLogsController < ApplicationController
 
   def search
     # viewのformで受け取ったパラメータをモデルに渡す
-    @health_logs = HealthLog.search(current_user, params[:search]).page(params[:page]).per(10)
-    # @health_logs = HealthLog.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
+    # 78~80行目のコメントアウトはモデルの6~9行目の記述に変えたときに追記しないとエラーがでるという内容。
+    # nilガードの&をorder page perのカンマの前に書く
+    # unless params[:search]
+    # @health_logs = current_user.health_logs.order(created_at: :desc)&.page(params[:page])&.per(10)
+    # else
+    @health_logs = HealthLog.search(current_user, params[:search]).order(created_at: :desc).page(params[:page]).per(10)
+    # end
   end
 
   private
