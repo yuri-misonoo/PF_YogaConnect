@@ -1,7 +1,7 @@
 class Public::ChatsController < ApplicationController
   # 相互フォローしてる人同士のみ
   before_action :follow_each_other, only: [:show]
-  
+
   def index
     my_rooms_ids = current_user.user_rooms.select(:room_id)
     @user_rooms = UserRoom.includes(:chats, :user).where(room_id: my_rooms_ids).where.not(user_id: current_user.id).reverse_order
@@ -25,8 +25,6 @@ class Public::ChatsController < ApplicationController
     else
       # user_roomsのroomを格納
       @room = user_rooms.room
-
-      # それ以外なら、新しく作る
     end
 
     @chats = @room.chats
@@ -36,11 +34,11 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     room = Room.find(chat_params[:room_id])
-    
+
     # チャット機能
     @visited_id = params[:chat][:visited_id]
     @room_id = @chat.room
-    
+
     if @chat.save
       @chats = room.chats
       notification = current_user.active_notifications.new(
