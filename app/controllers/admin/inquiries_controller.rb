@@ -8,4 +8,10 @@ class Admin::InquiriesController < ApplicationController
   def show
     @inquiry = Inquiry.find(params[:id])
   end
+
+  def destroy
+    @inquiry = Inquiry.find(params[:id])
+    @inquiry.destroy
+    redirect_to admin_inquiries_path, notice: 'お問い合わせを削除しました'
+  end
 end

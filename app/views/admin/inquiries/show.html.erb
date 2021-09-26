@@ -31,6 +31,10 @@
         <div class="border p-2"><%= @inquiry.message %></div>
       </div>
 
+      <div class="mt-3 text-center">
+        <%= link_to '削除', admin_inquiry_path, method: :delete, "data-confirm" =>"本当に削除しますか？", class: 'btn btn-secondary btn-sm' %>
+      </div>
+
     </div>
   </div>
 </div>
