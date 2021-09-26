@@ -4,7 +4,7 @@
       <h5 class="text-center">チャット一覧</h5>
 
       <% @user_rooms.each do |room| %>
-        <table class="table">
+        <table class="table text-secondary">
           <tbody>
             <tr>
               <td style="width: 10%">
@@ -13,7 +13,7 @@
                 <% end %>
               </td>
               <td style="width: 70%">
-                <%= room.user.name %><br>
+                <%= link_to room.user.name, chat_path(room.user), class: 'text-secondary' %><br>
                 <% if room.chats != [] %>
                   <p><%= room.chats.last.message %></p>
               </td>
