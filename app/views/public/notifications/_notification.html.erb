@@ -10,25 +10,25 @@
 
     <% case notification.action %>
       <% when 'follow' then %>
-        <span>あなたをフォローしました</span>
+        <strong>あなたをフォローしました</strong>
 
       <% when 'favorite' then %>
-        <span><%= link_to 'いいねしました', post_path(notification.post), class: "text-secondary" %></span>
+        <strong><%= link_to 'いいねしました', post_path(notification.post), class: "text-secondary" %></strong>
 
       <% when 'post_comment' then %>
         <% if notification.post.user_id == notification.visited.id %>
-          <%= link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %>
+          <strong><%= link_to 'あなたの投稿', post_path(notification.post), class: 'text-secondary' %></strong>
         <% else %>
           <%= link_to user_path(visitor) do %>
             <%= attachment_image_tag visitor, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-pill" %>
           <% end %>
-          <% notification.post.user.name + 'さんの投稿' %>
+          <strong><% notification.post.user.name + 'さんの投稿' %></strong>
         <% end %>
-        <span>にコメントしました</span>
+        <strong>にコメントしました</strong>
 
       <% when 'chat' then %>
         <%= link_to chat_path(notification.visitor_id), class: 'text-secondary' do %>
-          <%= visitor.name %>さんがあなたにDMを送りました
+          <strong>あなたにDMを送りました</strong>
         <% end %>
     <% end %>
 
@@ -36,3 +36,7 @@
   </div>
 
 <% end %>
+
+<div class="mt-4">
+  <%= paginate notifications %>
+</div>

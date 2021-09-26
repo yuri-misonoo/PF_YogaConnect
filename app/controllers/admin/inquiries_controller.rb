@@ -2,7 +2,7 @@ class Admin::InquiriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @inquiries = Inquiry.all.order(created_at: :desc)
+    @inquiries = Inquiry.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show

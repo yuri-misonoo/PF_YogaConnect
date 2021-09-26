@@ -48,7 +48,11 @@
         <% end %>
       </table>
 
-    <div>
+      <div class="mt-4">
+        <%= paginate @users %>
+      </div>
+
+    <div class="mt-5">
       <label>日別ユーザー登録者数（総ユーザー数： <%= @users.count %>）</label>
       <div>
         <%= line_chart @users_count, download: true, curve: false, empty: "データがありません", series: false, min: 0, colors: ['#0099FF'] %>
