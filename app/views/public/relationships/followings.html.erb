@@ -13,7 +13,11 @@
           <% @users.each do |user| %>
             <tbody>
               <tr>
-                <td style="width:7%"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size: "60x60", class: "rounded-pill" %></td>
+                <td style="width:7%">
+                  <%= link_to user_path(user) do %>
+                    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size: "60x60", class: "rounded-pill" %>
+                  <% end %>
+                </td>
                 <td style="width:63%">
                   <%= link_to user.name, user_path(user), class: "text-secondary" %>
                   <p class="text-secondary"><%= user.introduction %></p>

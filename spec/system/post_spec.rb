@@ -172,11 +172,11 @@ describe '投稿のテスト' do
       end
 
       it '詳細ページへのリンクが表示されている' do
-        expect(page).to have_link '詳細へ', href: post_path(post)
+        expect(page).to have_link '詳細', href: post_path(post)
       end
 
       it '一覧ページへのリンクが表示されている' do
-        expect(page).to have_link '一覧へ', href: posts_path
+        expect(page).to have_link 'タイムライン', href: posts_path
       end
     end
 
