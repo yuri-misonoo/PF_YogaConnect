@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'inquiries/index'
-    get 'inquiries/confirm'
-    get 'inquiries/thanks'
-  end
   get root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
