@@ -87,11 +87,13 @@
       <div class="mt-5">
         <h5 class="text-center">投稿一覧</h5>
         
-        <div class="text-right">
-          <%= link_to users_favorite_path(current_user), class: 'text-secondary' do %>
-            <i class="fas fa-heart text-danger"></i>いいねした投稿
-          <% end %>
-        </div>
+        <% if @user == current_user %>
+          <div class="text-right">
+            <%= link_to users_favorite_path(current_user), class: 'text-secondary' do %>
+              <i class="fas fa-heart text-danger"></i>いいねした投稿
+            <% end %>
+          </div>
+        <% end %>
 
         <%= render 'public/posts/post_index', posts: @posts %>
       </div>
