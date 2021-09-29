@@ -23,11 +23,14 @@
  @import 'font-awesome';
 
 
-
 .list{
  font-size: 12px;
 }
 
+.pc-only{ display: block;
+  line-height: 150%;
+}
+.sp-only{ display: none; }
 
 /* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
 @media (max-width: 992px) {
@@ -52,6 +55,9 @@
     top: 10%;
     }
   }
+
+  .pc-only { display: none; }
+  .sp-only { display: block; }
 }
 
 
