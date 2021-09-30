@@ -27,9 +27,12 @@
  font-size: 12px;
 }
 
+/* パソコン画面での改行 */
 .pc-only{ display: block;
   line-height: 150%;
 }
+
+/* iphone5,SEの画面に合わせた改行 */
 .sp-only{ display: none; }
 
 /* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
