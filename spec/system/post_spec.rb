@@ -148,12 +148,6 @@ describe '投稿のテスト' do
         fill_in 'post_comment[body]', with: Faker::Lorem.characters(number: 30)
         click_button '送信'
       end
-
-      it '送信後に投稿詳細ページにレンダーされるか' do
-        #expect(current_path).to eq '/post/' + post.id.to_s
-        #expect(response).to render_template(:show)
-        #p show.html
-      end
     end
   end
 
