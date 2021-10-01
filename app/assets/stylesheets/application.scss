@@ -28,12 +28,14 @@
 }
 
 /* パソコン画面での改行 */
-.pc-only{ display: block;
+.pc-only{ 
+  display: block;
   line-height: 150%;
 }
 
 /* iphone5,SEの画面に合わせた改行 */
-.sp-only{ display: none; }
+.sp-only{ display: none;
+}
 
 /* 992pxより小さい画面の時の指定（今回はハンバーガーメニューになる時のpx） */
 @media (max-width: 992px) {
@@ -60,7 +62,10 @@
   }
 
   .pc-only { display: none; }
-  .sp-only { display: block; }
+  .sp-only { 
+    display: block;
+    line-height: 130%;
+  }
 }
 
 
