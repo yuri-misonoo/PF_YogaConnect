@@ -60,12 +60,9 @@ class User < ApplicationRecord
     end
   end
 
-  def self.search(search)
-    if search
-      User.where(['name LIKE ?', "%#{search}%"])
-    else
-      User.all
-    end
+  def self.search(name)
+    return all unless name
+    where(['name LIKE ?', "%#{name}%"])
   end
 
   # ログイン時に退会済みのユーザーをはじく

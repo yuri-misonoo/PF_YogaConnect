@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
+    @users = User.search(params[:search]).order(created_at: :desc).page(params[:page]).per(20)
     @users_count = User.group_by_day(:created_at).size
   end
 
