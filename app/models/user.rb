@@ -61,6 +61,9 @@ class User < ApplicationRecord
   end
 
   def self.search(name)
+    # selfはクラス自体を呼び出す（今回はUser）から繰り返しUserを書く必要はない
+    # 引数のnameが見つからないなら、allを返す
+    # returnを実装すると、nameに当てはまる内容が見つかった時点で中断
     return all unless name
     where(['name LIKE ?', "%#{name}%"])
   end
