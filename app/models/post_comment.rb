@@ -10,11 +10,8 @@ class PostComment < ApplicationRecord
   end
 
   # 検索機能の定義
-  def self.search(search)
-    if search
-      PostComment.where(['body LIKE ?', "%#{search}%"])
-    else
-      PostComment.all
-    end
+  def self.search(body)
+    return all unless body
+    where(['body LIKE ?', "%#{body}%"])
   end
 end
