@@ -10,4 +10,13 @@ class Notification < ApplicationRecord
 
   belongs_to :visitor, class_name: 'User', optional: true
   belongs_to :visited, class_name: 'User', optional: true
+
+  # 通知の未確認、確認の切り替え
+  def self.check!
+    where(checked: false).each do |notification|
+      notification.update!(checked: true)
+    end
+  end
+
+
 end
