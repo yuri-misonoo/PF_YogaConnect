@@ -12,11 +12,18 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'User', optional: true
 
   # 通知の未確認、確認の切り替え
+  # def self.check!
+  #   where(checked: false).each do |notification|
+  #     notification.update!(checked: true)
+  #   end
+  # end
+  
+  # 上の定義をscopeを使って記述し直し
+  scope :uncheck, -> { where(checked: false) }
+  
   def self.check!
-    where(checked: false).each do |notification|
-      notification.update!(checked: true)
-    end
+    # {}を使って、一行
+    uncheck.each { |notification| notification.update!(checked: true) }
   end
-
 
 end
